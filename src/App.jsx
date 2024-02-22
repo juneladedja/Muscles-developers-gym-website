@@ -5,9 +5,9 @@ import { Gravity } from "./Gravity";
 function App() {
   return (
     <>
-      <Navbar></Navbar>
+       <Navbar></Navbar>
       <Herosection />
-      <Gravity />
+      <Gravity /> 
     </>
   );
 }
