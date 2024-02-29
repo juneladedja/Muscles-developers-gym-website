@@ -1,0 +1,122 @@
+
+.michroma-regular {
+    font-family: "Michroma", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+html body{
+    padding:0;
+    margin:0;
+    width:100%
+}
+
+.formContainer {
+    background-color: black;
+    height: 600px;
+    width:100vw;
+    margin: 0 auto; /* Imposta i margini a auto per centrare il contenitore */
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-image:"" ;
+
+    
+}
+.form_Signup{
+    gap:20px;
+    display:flex;
+    flex-direction: column;
+    width: 30%;
+    margin-right:10%
+    
+}
+.formButtons{
+    display: flex;
+    justify-content: center;
+    gap:30px;
+
+}
+.buttonSignup{
+    height: 60%;
+    border-radius: 0;
+    color: white;
+    background-color: transparent;
+    border: 0.4px solid white;
+    transition:1s ease-in-out
+}
+
+.buttonSignup:hover{
+  transform:scale(1.1)
+
+}
+
+
+.inputSignUp{
+    height: 30px;
+}
+    .imgSignUp{
+        position:absolute;
+        width: 47.7%;
+        right:50%
+    }
+
+.signUph2{
+    color: white;
+    font-size:30px;
+    text-align: center;
+}
+.signUph3{
+    color:white;
+    font-size:14px;
+    text-align: center;
+    font-family: "Michroma", sans-serif;
+}
+.buttonorLogin{
+    color: white;
+    
+}
+.buttonorLogin span{
+    margin-right:6px;}
+  
+ .buttonorLogin:hover{
+   
+    transform: scale(1.1) ;
+ }
+ 
+ 
+button {
+    border-radius: 8px;
+    border: 1px solid ;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #000000;
+    cursor: pointer;
+    text-align: center;
+  
+  }
+  .rememberMeTxt{
+    color: white;
+    text-align: center;
+  }
+  @keyframes pulse {
+    0% {
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5), -2px -2px 4px rgba(0, 0, 0, 0.8);
+    }
+    50% {
+        text-shadow: 3px 3px 6px rgba(255, 255, 255, 0.7), -3px -3px 6px rgba(0, 0, 0, 0.9);
+    }
+    100% {
+        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5), -2px -2px 4px rgba(0, 0, 0, 0.8);
+    }
+}
+
+.signUph2 {
+    text-align: center;
+    animation: pulse 2s infinite alternate;
+    color: white;
+}
+.span{
+    font-family: "Michroma", sans-serif;
+}
