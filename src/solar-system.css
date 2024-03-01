@@ -1,0 +1,20 @@
+.solar-system-container {
+  position: relative;
+  display: flex;
+  justify-content: baseline;
+  overflow: hidden;
+  height: 560px;
+  align-items: center;
+  width: 98%;
+  margin-left:-2px ;
+}
+
+.solar-system-container iframe {
+  position: absolute;
+  width: 100vw;
+  height: 670px;
+}
+
+.over-solar-system{
+    padding-top: 70px;
+}
