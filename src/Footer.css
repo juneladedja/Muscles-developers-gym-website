@@ -3,10 +3,8 @@ footer {
   font-size: 13px;
   color: rgb(171, 169, 169);
   background-color: black;
-  width: 100% !important;
-  height: 70%;
-  padding: 4%;
-  display: block;
+  width:100% !important;
+  height: 70% !important;
   position: relative;
   
 }
@@ -50,7 +48,6 @@ footer {
   gap: 14px;
   display: flex;
   justify-content: right;
-  margin-bottom: 20px;
 }
 
 .social_icons i {
@@ -58,6 +55,15 @@ footer {
   font-size: 22px;
   margin-right: 16px;
   transition: 1s ease-in-out;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.Icons-title{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  margin-right: 10px;
 }
 
 .social_icons i:hover {
@@ -70,7 +76,6 @@ footer {
   flex-wrap: nowrap;
   flex-direction: row;
   justify-content: right;
-  margin-bottom: 50px;
 }
 
 .footer_links ul {
@@ -125,7 +130,6 @@ footer {
   width: 100%;
   gap: 10px;
   justify-content: right;
-  margin-top: 40px;
 }
 
 .Nasaimg {
@@ -143,30 +147,6 @@ footer {
   width: 30px;
 }
 
-.button_container {
-  width: 43%;
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 10px;
-  margin-top: 20px;
-}
-
-.button_container button {
-  background-color: transparent;
-  color: rgb(255, 255, 255);
-  background-color: transparent;
-  border: 2px solid black;
-  font-size: 13px;
-  padding: 6px 6px;
-  display: inline;
-  justify-content: flex-start;
-  transition: 1s ease-in-out;
-}
-
-button:hover {
-  color: white;
-  transform: scale(1.2);
-}
 
 .footer_copy {
   color: rgb(119, 119, 119);

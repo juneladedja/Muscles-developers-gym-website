@@ -97,10 +97,6 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="button_container">
-        <button>Service code</button>
-      </div>
-
       <div className="footer_copy">
         <p>&copy;2024 Nebula.com™. All rights reserved.</p>
       </div>
