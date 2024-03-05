@@ -9,7 +9,7 @@ html body{
     width:100%
 }
 
-.formContainer {
+.formLoginContainer {
     background-color: black;
     height: 600px;
     width:100vw;
@@ -21,7 +21,7 @@ html body{
 
     
 }
-.form_Signup{
+.form_Login{
     gap:20px;
     display:flex;
     flex-direction: column;
@@ -50,21 +50,21 @@ html body{
 }
 
 
-.inputSignUp{
+.inputLogin{
     height: 30px;
 }
     .imgSignUp{
         position:absolute;
         width: 47.7%;
-        left:50%;
+        left:54%;
     }
 
-.signUph2{
+.Loginh2{
     color: white;
     font-size:30px;
     text-align: center;
 }
-.signUph3{
+.Loginh3{
     color:white;
     font-size:14px;
     text-align: center;
@@ -111,7 +111,7 @@ button {
     }
 }
 
-.signUph2 {
+.Loginh2 {
     text-align: center;
     animation: pulse 2s infinite alternate;
     color: white;
