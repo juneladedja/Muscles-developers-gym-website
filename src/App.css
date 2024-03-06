@@ -1,21 +1,20 @@
-#root {
+@import url('https://fonts.cdnfonts.com/css/michroma');
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Michroma", sans-serif;
+
+
 }
 
+
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   background-color: rgb(0, 0, 0);
-  width: 100vw;
+  margin: 0 auto;
 }
 
 body::-webkit-scrollbar {
   display: none;
-}
-
-.codepen-embed-body {
-  border: none !important;
 }

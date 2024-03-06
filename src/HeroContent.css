@@ -1,13 +1,13 @@
 .hero-content {
   display: flex;
   justify-content: center;
-
   position: relative;
   width: 100%;
-  height: 700px;
+  height: 100vh;
   background-image: url("/src/assets/greg-rakozy-oMpAz-DN-9I-unsplash.webp");
   background-size: cover;
-  background-position: center bottom;
+  background-position: center 70%;
+  overflow: hidden;
 }
 
 .hero-content img {
@@ -84,8 +84,8 @@
 .star-span:nth-child(3) {
   opacity: 0;
   position: absolute;
-  top: -50px;
-  right: 16%;
+  top: 0px;
+  right: 1%;
   animation: animate 2s linear infinite, pause 16s infinite;
 
 }

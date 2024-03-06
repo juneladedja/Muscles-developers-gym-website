@@ -11,7 +11,7 @@ export function Navbar() {
     <>
       <nav className="Navbar">
         <div className="Navbar-div">
-          <h2 className="Nebula-span">NEBULA</h2>
+          <h2 className="Nebula-span">Nebula</h2>
         </div>
         <ul className="Nav-ul-container">
           <li className="li-container">

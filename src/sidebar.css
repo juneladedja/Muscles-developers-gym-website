@@ -2,10 +2,10 @@
 
 .hamburger {
   position: absolute;
-  left: 30px;
-  top: 24px;
+  left: 32px;
+  top: 16px;
   display: flex;
-  height: 25px;
+  height: 26px;
   width: 24px;
   flex-direction: column;
   justify-content: space-between;
@@ -17,10 +17,12 @@
 
 .hamburger__icon {
   display: inline-block;
-  height: 3px;
-  width: 26px;
+  height: 5px;
+  width: 5px;
   background: #fff;
+  border-radius: 4px;
   box-shadow: 1px 1px 1px #00000052;
+  margin: 1px;
 
 
 }

@@ -1,21 +1,14 @@
-import React from 'react'
+import React from "react";
 
 function Star() {
   return (
-<div className='star-animation'>
-            <span className='star-span'></span>
-            <span className='star-span'></span>
-            <span className='star-span'></span>
-            <span className='star-span'></span>
-            {/* <span className='star-span'></span>
-            <span className='star-span'></span>
-            <span className='star-span'></span>
-            <span className='star-span'></span>
-            <span className='star-span'></span> */}
-
-
-
-        </div>  )
+    <div className="star-animation">
+      <span className="star-span"></span>
+      <span className="star-span"></span>
+      <span className="star-span"></span>
+      <span className="star-span"></span>
+    </div>
+  );
 }
 
-export default Star
+export default Star;
