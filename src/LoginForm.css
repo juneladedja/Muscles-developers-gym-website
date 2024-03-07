@@ -1,33 +1,29 @@
+
 .michroma-regular {
     font-family: "Michroma", sans-serif;
     font-weight: 400;
     font-style: normal;
   }
-html body{
-    padding:0;
-    margin:0;
-    width:100%
-}
 
 .formLoginContainer {
     background-color: black;
-    height: 600px;
+    height: 100vh;
     width:100vw;
-    margin: 0 auto; /* Imposta i margini a auto per centrare il contenitore */
     display:flex;
     align-items: center;
     justify-content: flex-start;
-    background-image:"" ;
+  
 
     
 }
 .form_Login{
+    position:absolute;
     gap:20px;
     display:flex;
     flex-direction: column;
-    width: 30%;
-    margin-left:10%
-    
+    width: 35vw;
+    margin-left:10%;
+    z-index: 2;
 }
 .formButtons{
     display: flex;
@@ -52,11 +48,14 @@ html body{
 
 .inputLogin{
     height: 30px;
+
 }
-    .imgSignUp{
+ .imgLogin{
         position:absolute;
-        width: 47.7%;
-        left:54%;
+        right: 0;
+        position :absolute;
+        z-index: 1;
+        height: 100vh;
     }
 
 .Loginh2{
@@ -119,3 +118,32 @@ button {
 .span{
     font-family: "Michroma", sans-serif;
 } 
+.containerAllForm{
+    position: relative;
+}
+@media screen and (max-width: 400px) {
+    .imgLogin{
+      position: absolute;
+      right: -30px;
+      height: 90vh;
+      border: red;
+
+    }
+    .form_Login{
+        background-color: black;
+        opacity: 80%;
+        width: 80vw;
+        margin: 0;
+        border-radius: 10px;
+        padding: 10px;
+       
+    }
+    
+.formLoginContainer{
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding:0;
+         
+    }
+}

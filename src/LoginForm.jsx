@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "./LoginForm.css";
-import imgSignUp from "./imgSignUp.png";
+import imgLogin from "./loginImg.png";
 
 export function LoginForm() {
     const [formData, setFormData] = useState({
@@ -28,7 +28,8 @@ export function LoginForm() {
 
     return (
         <>
-            <img className="imgSignUp" src={imgSignUp} alt="" />
+        <div className='containerAllForm    '>
+            <img className="imgLogin" src={imgLogin} alt="" />
             <div className="formLoginContainer">
                 <form className="form_Login" onSubmit={handleSubmit}>
                 <h2 className="Loginh2"> <span className='span'>NEBULA</span></h2>
@@ -67,6 +68,7 @@ export function LoginForm() {
                         <p className="buttonorLogin" color="white">Or <span>Sign Up</span></p>
                     </div>
                 </form>
+            </div>
             </div>
         </>
     );
