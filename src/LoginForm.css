@@ -1,4 +1,12 @@
-
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    overflow: hidden;
+    background-color: #000000;
+}
 .michroma-regular {
     font-family: "Michroma", sans-serif;
     font-weight: 400;
@@ -24,6 +32,7 @@
     width: 35vw;
     margin-left:10%;
     z-index: 2;
+    min-width: 300px;
 }
 .formButtons{
     display: flex;
@@ -121,12 +130,12 @@ button {
 .containerAllForm{
     position: relative;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 430px) {
     .imgLogin{
       position: absolute;
-      right: -30px;
-      height: 90vh;
-      border: red;
+      
+
+    
 
     }
     .form_Login{
