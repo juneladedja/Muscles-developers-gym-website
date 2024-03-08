@@ -1,14 +1,13 @@
-import { useState } from 'react'
 
 import './App.css'
-import { RegisterForm } from './RegisterForm'
+import { Explore } from './Explore'
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <RegisterForm/>
+    <Explore/>
     </>
   )
 }

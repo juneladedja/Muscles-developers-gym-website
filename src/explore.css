@@ -1,0 +1,232 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.containerAllCards{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+
+.contenitore-titolo{
+    display: flex;
+    flex-direction: column;
+}
+
+.adventuresTitle{
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    height: 50px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.cards{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    width: 30%;
+    align-items: center;
+    margin-bottom: -320px;
+    margin-top: 50px;
+}
+
+.adventures-card{
+    margin-left: 50px;
+    position: relative;
+    width: 350px;
+    height: 500px;
+    border-radius: 35px;
+  }
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    background: rgba(18, 18, 18, 0.6); /* Fondo semitrasparente */
+    color: white;
+    border-radius: 35px;
+  }
+
+.adventures-card h4{
+    color: white;
+    z-index: 1;
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+}
+
+.planetpng{
+    z-index: 2;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    left: 5px;
+    bottom: 100px;
+}
+
+.canyonmarte{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 40px;
+}
+
+.astromare{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 40px;
+}
+
+#underline-text{
+    border-bottom: 1px solid white;
+}
+
+.quads{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 40px;
+}
+
+.booknow{
+    color: white;
+    background-color: transparent;
+    border: none;
+    height: 60px;
+    width: 120px;
+    font-size: 20px;
+}
+
+.booknow:hover{
+    transform: scale(1.2);
+    transition: 1s ease-in-out;
+}
+
+
+@media screen and (max-width: 800px) {
+
+    .canyonmarte{
+        width: 700px;
+        height: 150px;
+    }
+
+    .cards{
+        margin-top: -10px;
+    }
+
+    .astromare{
+        width: 700px;
+        height: 150px;
+    }
+
+    .quads{
+        width: 700px;
+        height: 150px;
+    }
+
+    .overlay{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 700px;
+        height: 150px;
+    }
+
+    #underline-text{
+        border-bottom: none;
+    }
+
+    .adventures-card h4{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 100px;
+    }
+
+    .adventures-card h4:hover{
+        transform: scale(1.2);
+        transition: 1s ease-in-out;
+    }
+
+    .booknow{
+        display: none;
+    }
+
+    .planetpng{
+        display: none;
+    }
+
+    .containerAllCards{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .canyonmarte{
+        width: 250px;
+        height: 90px;
+    }
+
+    .cards{
+        margin-top: -10px;
+    }
+
+    .astromare{
+        width: 250px;
+        height: 90px;
+    }
+
+    .quads{
+        width: 250px;
+        height: 90px;
+    }
+
+    .overlay{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 300px;
+        height: 90px;
+    }
+
+    .adventures-card h4{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        height: 100px;
+    }
+
+    .adventures-card h4:hover{
+        transform: scale(1.2);
+        transition: 1s ease-in-out;
+    }
+
+    .booknow{
+        display: none;
+    }
+
+    .planetpng{
+        display: none;
+    }
+
+    .containerAllCards{
+        display: flex;
+        flex-direction: column;
+    }
+}
