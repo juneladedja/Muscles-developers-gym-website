@@ -7,7 +7,7 @@ export function RegisterForm() {
         fullName: '',
         email: '',
         password: '',
-        confirmPassword: '',
+        confirmPassword: 'ok',
         rememberPassword: false
     });
 
