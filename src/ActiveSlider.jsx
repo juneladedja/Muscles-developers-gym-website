@@ -23,16 +23,16 @@ const ActiveSlider = () => {
           },
           661: {
             slidesPerView: 2,
-            spaceBetween: 70,
+            spaceBetween: 10,
           },
 
           980: {
             slidesPerView: 3,
-            spaceBetween: 35,
+            spaceBetween: 30,
           },
           1200: {
             slidesPerView: 4,
-            spaceBetween: 35,
+            spaceBetween: 3,
 /* ---------------------------------------------------------- */
           }
         }}
