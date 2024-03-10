@@ -1,15 +1,19 @@
-footer {
+.footer {
   font-family: "Michroma", sans-serif;
   font-size: 13px;
   color: rgb(171, 169, 169);
   background-color: rgba(0, 0, 0, 0.188);
   padding-left: 40px;
-  height: 40vh;
+  height: 100vh;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  /* padding-top: 15%; */
 }
 
 @media (max-width: 500px) {
-  footer {
+  .footer {
     padding: 0;
   }
 }
@@ -17,14 +21,14 @@ footer {
 .top-footer {
   width: 100%;
   display: block;
-  justify-content: space-between;
-  margin: 30px 0;
-  
+  padding-top: 120px;
+  margin-bottom: 15vh;
 }
 
 @media (max-width: 500px) {
   .top-footer {
     padding-left: 30px;
+    margin-top: 100px;
   }
 }
 
@@ -42,7 +46,6 @@ footer {
   align-items: center;
   gap: 2vw;
   margin-bottom: 10px;
-
 }
 
 .facebook {
@@ -57,14 +60,12 @@ footer {
   width: 38px;
 }
 
-
 .partners {
   display: flex;
   color: rgb(255, 255, 255);
   text-shadow: 2px 2px 2px #00000052;
   align-items: center;
   gap: 2vw;
-
 }
 
 .Nasaimg {
@@ -81,9 +82,6 @@ footer {
   height: fit-content;
   width: 30px;
 }
-
-
-
 
 .footer_links {
   display: flex;
@@ -152,16 +150,12 @@ footer {
   text-decoration: underline;
 }
 
-
 @media (max-width: 500px) {
   .footer_copy {
     padding-left: 30px;
     padding-bottom: 10px;
   }
-
-
 }
-
 
 @media (max-width: 768px) {
   .footer_links ul {
@@ -205,12 +199,10 @@ footer {
   padding-top: 88%;
 }
 
-@media(max-width:500px){
+@media (max-width: 500px) {
   .moon-container .parallax {
     padding-top: 113%;
-
   }
-
 }
 
 .footer_links :nth-child(1) {
@@ -235,4 +227,3 @@ footer {
   font-size: 11px;
   margin: 20px 0;
 }
-

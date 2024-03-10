@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import "./Footer.css";
-import Facebook from "./assets/icons8-facebook-100.png"
-import Twitter from "./assets/icons8-twitterx-100.png"
-import Instagram from "./assets/icons8-instagram-100.png"
+import Facebook from "./assets/icons8-facebook-100.png";
+import Twitter from "./assets/icons8-twitterx-100.png";
+import Instagram from "./assets/icons8-instagram-100.png";
 import Nasaimg from "./assets/Nasa.png";
 import Spaceximg from "./assets/Spacex.png";
 import Googleimg from "./assets/google.png";
@@ -10,60 +10,53 @@ import Moon from "./assets/vollmond-mond-png-clipart.png";
 import { useRef } from "react";
 import { useState } from "react";
 export function Footer() {
-  let img_parallax = document.querySelector(".parallax");
-  window.addEventListener("scroll", () => {
-    let win_pose = window.scrollY;
-    console.log(win_pose);
-    let element_move = img_parallax.getBoundingClientRect();
-    if (win_pose > element_move.top) {
-      img_parallax.style.transform =
-        "translate(" + element_move.top * 10 + "px)";
-    }
-  });
+
 
   const imgRef = useRef(null);
 
   useEffect(() => {
+    let animationFrameId;
+
     const handleScroll = () => {
-      if (imgRef.current) {
-        const winScrollY = window.scrollY;
-        const elementRect = imgRef.current.getBoundingClientRect();
-        const translateY = (winScrollY - elementRect.top) * -0.1;
-        imgRef.current.style.transform = `translateY(${translateY}px)`;
-      }
+      animationFrameId = requestAnimationFrame(() => {
+        if (imgRef.current) {
+          const winScrollY = window.scrollY;
+          const elementRect = imgRef.current.getBoundingClientRect();
+          const translateY = (winScrollY - elementRect.top) * -0.1;
+          imgRef.current.style.transform = `translateY(${translateY}px)`;
+        }
+      });
     };
 
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
+
 
   return (
     <>
       <div className="moon-container">
-
         <div className="gradient"></div>
         <img ref={imgRef} className="parallax" src={Moon}></img>
       </div>
-      <footer>
+      <footer className="footer">
         <div className="top-footer">
-        <div className="Icons-title">
-        <h3 className="footer-title">Follow us</h3>
-        <img className="icons-img facebook" src={Facebook}/>
-        <img className="icons-img twitter" src={Twitter}/>
-        <img className="icons-img instagram" src={Instagram}/>
-        </div>
-        <div className="partners">
-          <h3 className="footer-title">Our Partner</h3>
-          <img className="Googleimg" src={Googleimg}></img>
-              <img className="Nasaimg" src={Nasaimg}></img>
-              <img className="Spaceximg" src={Spaceximg}></img>
-
-
-        </div>
-
+          <div className="Icons-title">
+            <h3 className="footer-title">Follow us</h3>
+            <img className="icons-img facebook" src={Facebook} />
+            <img className="icons-img twitter" src={Twitter} />
+            <img className="icons-img instagram" src={Instagram} />
+          </div>
+          <div className="partners">
+            <h3 className="footer-title">Our Partner</h3>
+            <img className="Googleimg" src={Googleimg}></img>
+            <img className="Nasaimg" src={Nasaimg}></img>
+            <img className="Spaceximg" src={Spaceximg}></img>
+          </div>
         </div>
         <div className="footer_links">
           <ul className="contact-links">
