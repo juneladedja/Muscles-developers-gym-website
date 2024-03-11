@@ -11,9 +11,9 @@ import './ActiveSlider.css';
 
 // SwiperCore.use([Navigation, Pagination]);
 
-const ActiveSlider = () => {
+const ActiveSlider = ({id}) => {
   return (
-    <div className="flex-container">
+    <div id={id} className="flex-container">
       <Swiper
         breakpoints={{
 

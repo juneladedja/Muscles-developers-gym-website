@@ -22,14 +22,17 @@
   width: 90vw;
   margin: 0 auto;
   padding-left: 3%;
+  transition: width 0.5s ease-out;
+
   
 }
 
 @media (min-width: 661px) and (max-width: 980px) {
   .swiper-container {
-    width: 75vw;
-    min-width: 640px;
+    width: 640px;
     padding-left: calc(7px + 5%);
+    transition: width 0.5s ease-out;
+
   }
 }
 
@@ -38,12 +41,16 @@
   position: relative;
   width: fit-content;
   border-radius: 18px;
+  text-shadow: 1px 1px 1px #00000052;
+
 }
 
 @media (max-width: 660px) {
   .swiper-container {
     width: 340px;
     padding: 0 45px;
+    transition: width 0.5s ease-out;
+
   }
 }
 
@@ -61,7 +68,7 @@
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
-  border: 1px solid rgba(255, 251, 251, 0.336);
+  border: 1px solid rgb(117, 113, 113);
 
   padding: 24px 20px; /* Adjust padding as needed */
 }
@@ -83,31 +90,42 @@ h2 {
 
 /* Button styles */
 .book-now-button {
-  border: 1px solid red;
+  border: 1px solid rgb(255, 255, 255);
   position: absolute;
   bottom: 10px;
   right: 10px;
   background-color: rgba(0, 0, 0, 0);
   color: white;
-  padding: 10px 20px;
+  padding: 0px 20px;
   border-radius: 20px;
+  height: 25px;
   cursor: pointer;
+  text-shadow: 1px 1px 1px #00000052;
+  border-radius: 7px;
+
+
+}
+
+.book-now-button:hover{
+  color: black;
+  background-color: white;
 }
 
 /*stile prezzo*/
 .mini-card {
   background-color: rgba(0, 0, 0, 0);
   border-radius: 8px;
-  padding: 12px;
-  margin-top: 12px;
+  margin-bottom: 22px;
 }
 
 .mini-card h2 {
   font-size: 16px;
   margin-bottom: 8px;
+  margin: 0;
 }
 
 .mini-card p {
   font-size: 14px;
   margin: 0;
 }
+

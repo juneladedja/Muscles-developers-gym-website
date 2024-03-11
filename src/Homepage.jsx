@@ -13,10 +13,10 @@ function Homepage() {
   return (
     <>
       <Navbar />
-      <HeroContent id="section1">
+      <HeroContent>
         <Star></Star>
       </HeroContent>
-      <ActiveSlider></ActiveSlider>
+      <ActiveSlider id="section1"></ActiveSlider>
       <Experience></Experience>
       <SolarSystem id="section2"></SolarSystem>
       <News id="section3"></News>

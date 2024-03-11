@@ -66,6 +66,12 @@
   text-shadow: 2px 2px 2px #00000052;
   align-items: center;
   gap: 2vw;
+  padding-top: 25px;
+}
+
+.icons-img:hover {
+  transform: scale(1.2);
+  transition: transform 0.3s ease-in-out;
 }
 
 .Nasaimg {
@@ -194,12 +200,11 @@
 
 .moon-container .parallax {
   width: 118vw;
-  /* border: 1px solid rgb(9, 60, 18); */
   position: absolute;
-  padding-top: 88%;
+  padding-top: 100%;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .moon-container .parallax {
     padding-top: 113%;
   }
@@ -226,4 +231,34 @@
   font-weight: 500;
   font-size: 11px;
   margin: 20px 0;
+}
+
+.nebulaLogo {
+  position: absolute;
+  right: 10%;
+  top: 100px;
+  height: 150px;
+}
+
+.nebulaLogo_black {
+  display: none;
+}
+
+
+@media (max-width: 600px) {
+  .nebulaLogo {
+    display: none;
+  }
+
+  .nebulaLogo_black {
+    display: block;
+    position: absolute;
+    height: 200px;
+    top: 150px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;    
+    z-index: 33;
+  }
 }

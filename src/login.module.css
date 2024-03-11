@@ -1,0 +1,96 @@
+.login_container {
+  position: relative;
+  display: flex;
+  z-index: 55;
+  align-items: center;
+  height: 100% !important;
+  width: 100%;
+  pointer-events: all;
+  border-radius: 8px;
+}
+
+.login_container_form {
+  position: relative;
+  text-shadow: 1px 1px 1px #00000052;
+  color: white;
+  margin-left: 16%;
+  padding: 50px;
+  border-radius: 8px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+  height: fit-content;
+  background-color: rgba(71, 71, 71, 0.137);
+  backdrop-filter: blur(10px);
+  --webkit-backdrop-filter: blur(10px);
+
+}
+
+
+@media (max-width: 600px) {
+  .login_container_form {
+    margin: 0;
+  }
+  .login_container {
+    justify-content: center;
+  }
+}
+
+.login_container_form h2 {
+  margin: 20px auto;
+}
+
+.remember {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  width: 220px;
+}
+
+.register{
+  position: relative;
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+
+.register::after {
+  content: "";
+  height: 1.5px;
+  background: #ffffff;
+  width: 100%;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: transform 0.4s ease-in-out, opacity 0.4s linear;
+  box-shadow: 1px 1px 1px #00000052;
+}
+
+.register:hover::after {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.astronaut {
+  min-width: 600px;
+  width: 650px;
+  position: relative;
+  margin-left: auto;
+  margin-top: 0;
+  z-index: -1;
+}
+
+.fade_out{
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.fade_in {
+  opacity: 1;
+  transition: opacity 0.3s ease-in;
+}
+

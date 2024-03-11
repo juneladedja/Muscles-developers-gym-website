@@ -1,5 +1,8 @@
 import { useEffect } from "react";
 import "./Footer.css";
+import nebulaLogo from "./assets/logogo.png"
+import nebulaLogo_black from "./assets/logogo_black.png"
+
 import Facebook from "./assets/icons8-facebook-100.png";
 import Twitter from "./assets/icons8-twitterx-100.png";
 import Instagram from "./assets/icons8-instagram-100.png";
@@ -8,7 +11,6 @@ import Spaceximg from "./assets/Spacex.png";
 import Googleimg from "./assets/google.png";
 import Moon from "./assets/vollmond-mond-png-clipart.png";
 import { useRef } from "react";
-import { useState } from "react";
 export function Footer() {
 
 
@@ -22,7 +24,7 @@ export function Footer() {
         if (imgRef.current) {
           const winScrollY = window.scrollY;
           const elementRect = imgRef.current.getBoundingClientRect();
-          const translateY = (winScrollY - elementRect.top) * -0.1;
+          const translateY = (winScrollY - elementRect.top) * -0.12;
           imgRef.current.style.transform = `translateY(${translateY}px)`;
         }
       });
@@ -40,11 +42,14 @@ export function Footer() {
   return (
     <>
       <div className="moon-container">
+      <img className="nebulaLogo_black" src={nebulaLogo_black} alt="logo_black" />
+
         <div className="gradient"></div>
         <img ref={imgRef} className="parallax" src={Moon}></img>
       </div>
       <footer className="footer">
         <div className="top-footer">
+          <img className="nebulaLogo" src={nebulaLogo} alt="logo" />
           <div className="Icons-title">
             <h3 className="footer-title">Follow us</h3>
             <img className="icons-img facebook" src={Facebook} />
