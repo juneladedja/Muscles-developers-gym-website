@@ -26,7 +26,7 @@ export function Explore(){
             <img className="canyonmarte" src={canyon} alt="canyon su marte" />
             <div className="overlay">
               <img className="planetpng" src={mars} alt="martepng" />
-              <h4> <span id="underline-text"> CANYON TENT </span> ADVENTURES </h4>
+              <h4> CANYON TENT ADVENTURES </h4>
               <button className="booknow"> BOOK NOW </button>
             </div>
          </div>
@@ -39,7 +39,7 @@ export function Explore(){
             <img className="astromare" src={astromare} alt="astro in mare" />
             <div className="overlay">
               <img className="planetpng" src={nettuno} alt="nettunopng" />
-              <h4> <span id="underline-text"> OCEAN AERIAL </span> <br/> TOURS </h4>
+              <h4> OCEAN AERIAL<br/> TOURS </h4>
               <button className="booknow"> BOOK NOW </button>
             </div>
          </div>
@@ -51,7 +51,7 @@ export function Explore(){
             <img className="quads" src={quadsadv} alt="quads su venere" />
             <div className="overlay">
               <img className="planetpng" src={venere} alt="venerepng" />
-              <h4> <span id="underline-text"> QUADS DUNE </span><br/> TOUR </h4>
+              <h4> QUADS DUNE <br/> TOUR </h4>
               <button className="booknow"> BOOK NOW </button>
             </div>
          </div>

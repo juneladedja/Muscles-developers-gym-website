@@ -1,13 +1,13 @@
 
 import './App.css'
-import { Explore } from './Explore'
+import { Tuta } from './Tuta'
 
 
 function App() {
 
   return (
     <>
-    <Explore/>
+      <Tuta/>
     </>
   )
 }
