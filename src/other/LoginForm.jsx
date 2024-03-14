@@ -28,7 +28,7 @@ export function LoginForm() {
 
     return (
         <>
-        <div className='containerAllForm    '>
+        <div className='containerAllForm'>
             <img className="imgLogin" src={imgLogin} alt="" />
             <div className="formLoginContainer">
                 <form className="form_Login" onSubmit={handleSubmit}>

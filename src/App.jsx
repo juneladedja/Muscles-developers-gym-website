@@ -1,16 +1,19 @@
 import { useState } from 'react'
 
 import './App.css'
-import { RegisterForm } from './RegisterForm'
-import {LoginForm} from './LoginForm'
+
+import { Checkout } from './Checkout'
+
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-     <LoginForm/> 
-     <RegisterForm/>
+    
+   <Checkout/>
+     
     </>
 
   )
