@@ -7,21 +7,22 @@ export function Checkout() {
     const [showBillingAddress, setShowBillingAddress] = useState(false);
     const [billingData, setBillingData] = useState({});
     const [showSummary, setShowSummary] = useState(false);
-    const [progressStep, setProgressStep] = useState(1); // Aggiungi stato per il progresso
+    const [progressStep, setProgressStep] = useState(1); 
 
     const handleCompletePurchase = () => {
         setShowBillingAddress(true);
-        setProgressStep(2); // Imposta il passaggio 2 completato
+        setProgressStep(2); 
     };
 
     const handleConfirmBillingAddress = () => {
         setShowBillingAddress(false);
         setShowSummary(true);
-        setProgressStep(3); // Imposta il passaggio 3 completato
+        setProgressStep(3);
     };
 
     const handleFormChange = (e) => {
         setBillingData({ ...billingData, [e.target.name]: e.target.value });
+        console.log(billingData);
     };
 
     return (
@@ -30,7 +31,6 @@ export function Checkout() {
                 <div className='headerContainer'>
                     <h1 className="logo">NEBULA</h1>
                     <div className="menu-icons-container">
-                        {/* Quà possiamo inserire eventuali icone */}
                         <h3 style={{color:"white"}}>HOME</h3>
                     </div>
                 </div>
@@ -57,19 +57,19 @@ export function Checkout() {
                             <form style={{ height: '50%' }} action="" className="checkout-form">
                                 <div className="input-line">
                                     <label htmlFor="country">Country</label>
-                                    <input type="text" name="country" id="country" placeholder="Your country" onChange={handleFormChange} />
+                                    <input type="text" name="country" id="country" placeholder="Your country" value={billingData.country || ''} onChange={handleFormChange} />
                                 </div>
                                 <div className="input-line">
                                     <label htmlFor="city">City</label>
-                                    <input type="text" name="city" id="city" placeholder="Your city" onChange={handleFormChange} />
+                                    <input type="text" name="city" id="city" placeholder="Your city" value={billingData.city || ''} onChange={handleFormChange} />
                                 </div>
                                 <div className="input-line">
                                     <label htmlFor="street">Street</label>
-                                    <input type="text" name="street" id="street" placeholder="Your street" onChange={handleFormChange} />
+                                    <input type="text" name="street" id="street" placeholder="Your street" value={billingData.street || ''} onChange={handleFormChange} />
                                 </div>
                                 <div className="input-line">
                                     <label htmlFor="zipcode">Zip Code</label>
-                                    <input type="text" name="zipcode" id="zipcode" placeholder="Your zip code" onChange={handleFormChange} />
+                                    <input type="text" name="zipcode" id="zipcode" placeholder="Your zip code" value={billingData.zipcode || ''} onChange={handleFormChange} />
                                 </div>
                                 <input className='buttonBilling' type="button" value="Confirm Billing Address" onClick={handleConfirmBillingAddress} />
                             </form>
