@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navbar } from "./Navbar";
 import HeroContent from "./HeroContent";
 import SolarSystem from "./SolarSystem";
@@ -11,9 +11,20 @@ import "./HomePage.css"
 import Destination from "./Destination";
 
 
+
 function Homepage() {
+  useEffect(() => {
+    const scrollTo100vh = () => {
+      setTimeout(() => {
+        window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+      }, 3000);
+    };
+
+    scrollTo100vh();
+  }, []); // 
   return (
     <>
+
     <div className="homePage">
 
       <Navbar />

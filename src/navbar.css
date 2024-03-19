@@ -23,10 +23,11 @@
   align-items: center;
   cursor: pointer;
   max-width: 1920px;
+  z-index: 5;
 }
 
 .Navbar-div {
-  z-index: 2;
+  z-index: 5;
   margin-left: 50px;
 }
 
@@ -35,7 +36,7 @@
   font-size: 2.2em;
   height: 50px;
   text-shadow: 1px 1px 1px #00000052;
-  z-index: 3;
+  z-index: 7;
   margin-top: -15px;
 }
 .Nav-ul-container {

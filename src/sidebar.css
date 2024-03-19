@@ -9,7 +9,7 @@
   justify-content: space-between;
   cursor: pointer;
   user-select: none;
-  z-index: 1;
+  z-index: 5;
 }
 
 .hamburger__icon {
@@ -27,7 +27,7 @@
   pointer-events: none;
   height: 100vh;
   width: 320px;
-  background: #00000088;
+  background: #000000af;
   position: absolute;
   top: 0;
   left: 0;
@@ -36,6 +36,8 @@
   flex-direction: column;
   transform: translateX(-100%);
   transition: transform 0.4s ease-in-out;
+  z-index: 4;
+  border-right: 1px solid gray;
 }
 
 .sidebar__close {
@@ -54,6 +56,7 @@
   transform: translateX(-100%);
   cursor: pointer;
   transition: transform 0.4s ease-in-out 0.2s;
+  z-index: 9;
 }
 
 .sidebar__close::before,
@@ -80,6 +83,7 @@
   margin-top: 80px;
   margin-bottom: 80px;
   color: #898989;
+  z-index: 4;
 }
 
 .sidebar__menu button {
@@ -154,4 +158,36 @@
 
 .menu-control:checked + .sidebar .sidebar__menu a {
   transform: translateX(0);
+}
+
+.sidebar-open {
+  transform: translateX(0);
+}
+
+.overlay-hidden{
+  transition: opacity 0.4s ease-in-out;
+
+  z-index: 1;
+  position: fixed;
+  overflow: auto;
+  width: 0vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.64);
+  opacity: 0;
+}
+
+.overlay-visible{
+  z-index: 1;
+  position: fixed;
+  overflow: auto;
+  width: 200vw;
+  height: 100%;
+  left: 0;
+  cursor: 'not-allowed';
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.64);
+  transition: opacity 0.4s ease-in-out;
+
+  opacity: 1;
+
 }

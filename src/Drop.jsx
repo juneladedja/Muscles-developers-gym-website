@@ -6,7 +6,7 @@ import { GlobalContext } from "./GlobalContext";
 import Modal from "react-modal";
 
 function Drop() {
-  const [isPlanetSelected, setIsPlanetSelected] = useState(false);
+  // const [isPlanetSelected, setIsPlanetSelected] = useState(false);
   const {
     adults,
     setAdults,
@@ -22,6 +22,8 @@ function Drop() {
     setSelectedDate,
     log,
   } = useContext(GlobalContext);
+
+
 
   console.log(selectedOption);
 

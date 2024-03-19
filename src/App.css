@@ -20,3 +20,7 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
+
+/* .no-pointer-events *:not(.sidebar) {
+  pointer-events: none;
+} */

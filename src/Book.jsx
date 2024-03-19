@@ -2,26 +2,32 @@ import React, { useState } from "react";
 import "./Book.css";
 
 function Book() {
-    const [showBook, setShowBook] = useState(false)
-    const [readyBook, setReadyBook] = useState(false)
+  const [bookings, setBookings] = useState([]);
 
-    const book_back = () => {
-        setShowBook(false)
-        setReadyBook(false)
-    }
+  // useEffect(() => {
+  //     .get("/api/bookings")
+  //     .then((response) => {
+  //       setBookings(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Errore nel recupero delle prenotazioni:", error);
+  //     });
+  // }, []); // Esegui solo al caricamento del componente
   return (
-    <div className={`${"book"} ${showBook ? "expanded_book" : ""} ${readyBook ? "ready_book" : false}`} >
-      <div className="user_profile">
-        <p>My trips </p>
-        <button onClick={book_back} > Back</button>
+    <>
+      <div className="book-container">
+        <div className="book">
+          <h2>My Books</h2>
+          <ul>
+            {bookings.map((booking) => (
+              <li key={booking.id}>
+                <strong>{booking.planet}</strong> - {booking.date}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div className="trips-list">
-        <p>jhgkhg</p>
-      </div>
-      <div className="check">
-        <p className="check-btn">Check Out</p>
-      </div>
-    </div>
+    </>
   );
 }
 

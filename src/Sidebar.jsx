@@ -1,42 +1,37 @@
-import React, { useContext, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./sidebar.css";
 import Profile from "./Profile";
-import { SideContext } from "./SideContext";
-import Book from "./Book";
 
 function Sidebar() {
   // const { showProfile, setShowProfile } = useContext(SideContext);
   const [expanded, setExpanded] = useState(false);
   const [ready, setReady] = useState(false);
-  const [book, setBook] = useState(false)
-  const [showSide, setShowSide] = useState(false)
 
-  // const toggleSide = () => {
-  //   setShowSide(!showSide)
-  // }
 
-  const toggleProfile = () => {
-    // setShowProfile(!showProfile);
-    setExpanded(()=>!expanded);
+  const [scrollBlocked, setScrollBlocked] = useState(false);
+  const [overlay, setOverlay] = useState(false)
+  const toggleScroll = () => {
+    setScrollBlocked(!scrollBlocked);
+    setOverlay(!overlay)
+  };
+  // Applica lo stile appropriato al body in base allo stato dello scroll
+  if (scrollBlocked) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+  /* ---------------------------------------------------- */
 
+  const toggleProfile = (e) => {
+    setExpanded(() => !expanded);
     setTimeout(() => {
       setReady(!ready);
     }, 400);
   };
 
-  // const [showBook, setShowBook] = useState(false)
-  // const [readyBook, setReadyBook] = useState(false)
-
-
-  // const toggleBook = () => {
-  //   setShowBook(!showBook)
-  //   setReadyBook(!readyBook)
-
-  // }
-
   return (
     <>
-      <label htmlFor="menu-control" className="hamburger">
+      <label htmlFor="menu-control" className="hamburger" onClick={toggleScroll} >
         <i className="hamburger__icon"></i>
         <i className="hamburger__icon"></i>
         <i className="hamburger__icon"></i>
@@ -44,16 +39,27 @@ function Sidebar() {
 
       <input type="checkbox" id="menu-control" className="menu-control" />
 
-      {/* <aside className={`${showSide ? "sidebar" : "sidebar__close" }`}> */}
       <aside className="sidebar">
+        <div className={overlay ? "overlay-visible" :"overlay-hidden"}>
+        </div>
+
         <nav className="sidebar__menu">
-          <button onClick={toggleProfile}><span className="underline">Profile</span></button>
-          <button><span className="underline">My bookings</span></button>
-          <button><span className="underline">Privacy Policy</span></button>
-          <button><span className="underline">Contacts</span></button>
+          <button onClick={toggleProfile}>
+            <span className="underline">Profile</span>
+          </button>
+          <button>
+            <span className="underline">My bookings</span>
+          </button>
+          <button>
+            <span className="underline">Privacy Policy</span>
+          </button>
+          <button>
+            <span className="underline">Contacts</span>
+          </button>
         </nav>
 
-        <label htmlFor="menu-control" className="sidebar__close"></label>
+        <label htmlFor="menu-control" className="sidebar__close" onClick={toggleScroll} ></label>
+
       </aside>
       <Profile
         expanded={expanded}
@@ -61,15 +67,6 @@ function Sidebar() {
         ready={ready}
         setReady={setReady}
       ></Profile>
-      <Book 
-      // showBook={showBook}
-      // setShowBook={setShowBook}
-      // readyBook={readyBook}
-      // setReadyBook={setReadyBook}
-      
-      >
-        
-      </Book>
     </>
   );
 }

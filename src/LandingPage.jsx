@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import landingPage from "./landingPage.module.css";
 import Spline from "@splinetool/react-spline";
 import Login from "./Login";
@@ -22,6 +22,8 @@ export default function LandingPage() {
     }, 500);
     setIsVisible(!isVisible)
   };
+
+
 
   return (
     <>

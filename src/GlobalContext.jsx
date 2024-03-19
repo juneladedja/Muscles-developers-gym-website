@@ -10,6 +10,7 @@ function GlobalProvider({ children }) {
   const [baggages, setBaggages] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
   const [showOptions, setShowOptions] = useState(false);
+  const [bookings, setBookings] = useState([])
 
   function log() {
     console.log({
@@ -49,6 +50,8 @@ function GlobalProvider({ children }) {
     selectedDate,
     setSelectedDate,
     planetBackgrounds,
+    bookings,
+    setBookings,
     log,
   };
   return (
