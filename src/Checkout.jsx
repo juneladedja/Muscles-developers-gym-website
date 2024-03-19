@@ -18,13 +18,15 @@ export function Checkout() {
         setShowBillingAddress(false);
         setShowSummary(true);
         setProgressStep(3);
+        console.log("Billing Data:", JSON.stringify(billingData));
     };
 
     const handleFormChange = (e) => {
-        setBillingData({ ...billingData, [e.target.name]: e.target.value });
-        console.log(billingData);
+        const { name, value } = e.target;
+        const updatedBillingData = { ...billingData, [name]: value };
+        setBillingData(updatedBillingData);
     };
-
+    
     return (
         <>
             <div className='checkoutContainer'>
