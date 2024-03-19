@@ -7,7 +7,8 @@ export function Checkout() {
     const [showBillingAddress, setShowBillingAddress] = useState(false);
     const [billingData, setBillingData] = useState({});
     const [showSummary, setShowSummary] = useState(false);
-    const [progressStep, setProgressStep] = useState(1); 
+    const [progressStep, setProgressStep] = useState(1); {/* Questo state serve per la linea blu e i pallini della barra di avanzamento */}
+
 
     const handleCompletePurchase = () => {
         setShowBillingAddress(true);
@@ -18,7 +19,8 @@ export function Checkout() {
         setShowBillingAddress(false);
         setShowSummary(true);
         setProgressStep(3);
-        console.log("Billing Data:", JSON.stringify(billingData));
+        console.log("Billing Data:", JSON.stringify(billingData));{/* eseguo un console log solo dei dati di fatturazione */}
+
     };
 
     const handleFormChange = (e) => {
@@ -38,6 +40,8 @@ export function Checkout() {
                 </div>
 
                 <div className="progress-checkout-container">
+                   {/*In base al numero di progressStep(se maggiore di uno )la className sarà "completed" */}
+
                     <div className={`progress-step-container ${progressStep >= 1 ? 'completed' : ''}`}>
                         <div className={`step-check ${progressStep >= 1 ? 'completed' : ''}`}></div>
                         <span className="step-title">Shipping</span>
