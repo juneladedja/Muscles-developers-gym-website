@@ -1,6 +1,7 @@
 import { useState } from "react";
 import login from "./login.module.css";
 import astronaut from "./assets/loginImg.png";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [isVisible, setIsVisible] = useState(true);
@@ -13,7 +14,9 @@ function Login() {
       setLog(!log);
     }, 300);
   }
+
   const [formData, setFormData] = useState({
+    fullName: "",
     email: "",
     password: "",
     rememberPassword: false,
@@ -29,9 +32,26 @@ function Login() {
     });
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    localStorage.setItem("formData", JSON.stringify(formData));
     console.log(formData);
+    navigate("/homepage");
+  };
+
+  const isRegisterComplete = () => {
+    if (log) {
+      return formData.email && formData.password;
+    } else {
+      return (
+        formData.fullName &&
+        formData.email &&
+        formData.password &&
+        formData.confirmPassword
+      );
+    }
   };
 
   return (
@@ -47,6 +67,7 @@ function Login() {
             <h2>Nebula</h2>
 
             <input
+              className={login.input}
               onChange={handleInputChange}
               value={formData.email}
               name="email"
@@ -55,6 +76,7 @@ function Login() {
             />
             <br />
             <input
+              className={login.input}
               onChange={handleInputChange}
               value={formData.password}
               name="password"
@@ -74,7 +96,7 @@ function Login() {
             </label>
             <br />
 
-            <button type="submit">Login</button>
+            <button disabled={!isRegisterComplete()} className={login.input}>Login</button>
             <br />
             <span>
               or{" "}
@@ -97,40 +119,40 @@ function Login() {
             <h2>Nebula</h2>
 
             <input
+              className={login.input}
               onChange={handleInputChange}
               value={formData.fullName}
               name="fullName"
               placeholder="Full Name"
-              className="inputSignUp"
               type="text"
             />
             <br />
             <input
+              className={login.input}
               onChange={handleInputChange}
               value={formData.email}
               name="email"
               placeholder="Email"
-              className="inputSignUp"
               type="email"
             />
             <br />
 
             <input
+              className={login.input}
               onChange={handleInputChange}
               value={formData.password}
               name="password"
               placeholder="Password"
-              className="inputSignUp"
               type="password"
             />
             <br />
 
             <input
+              className={login.input}
               onChange={handleInputChange}
               value={formData.confirmPassword}
               name="confirmPassword"
-              placeholder="Confirm Password"
-              className="inputSignUp"
+              placeholder="Repeat Password"
               type="password"
             />
             <br />
@@ -139,14 +161,13 @@ function Login() {
                 onChange={handleInputChange}
                 checked={formData.rememberPassword}
                 name="rememberPassword"
-                className="checkbox18yo"
                 type="checkbox"
               />
               Remember password
             </label>
             <br />
 
-            <button type="submit">Register</button>
+            <button disabled={!isRegisterComplete()} className={login.input}>Register</button>
             <br />
 
             <span>
@@ -161,7 +182,6 @@ function Login() {
             </span>
           </form>
         )}
-
         <img className={login.astronaut} src={astronaut} alt="astronaut" />
       </div>
     </>

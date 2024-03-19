@@ -18,6 +18,7 @@ height: 3em;
 margin: 10px auto;
 border-radius: 8px;
 border: none;
+background: black;
 text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.432);
 
 }
@@ -39,6 +40,7 @@ text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.432);
   width: fit-content;
   margin: 0 auto;
   color: white;
+  background:none;
 }
 
 .start::after {
@@ -89,12 +91,12 @@ text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.432);
 .login{
 display: flex;
 position: absolute;
-overflow: visible;
+overflow: hidden;
 width: 90%;
-/* max-width: 1980px; */
 left: 5%;
 height: fit-content;
 bottom: 50.5px;
+max-width: 1980px;
 }
 
 #animatedDiv {
@@ -106,12 +108,14 @@ bottom: 50.5px;
   height: 2.5em;
   border: 2px solid rgb(165, 165, 165);;
   border-radius: 8px;
-  background-color: rgb(0, 0, 0);
+  background-color: black;
+  
 }
 
 #animatedDiv.expanded {
   display: block;
   height: 82.5vh;
+  max-height: 600px;
   transition: height 0.5s ease-out;
 }
 

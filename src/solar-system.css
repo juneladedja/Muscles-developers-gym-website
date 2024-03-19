@@ -7,19 +7,25 @@
   align-items: center;
   width: 99vw;
   margin: 0 auto;
+  background-color: black;
 }
 
 
 .over-solar-system {
-  margin-top: 7%;
+  background-color: black;
+
+  /* margin-top: 7%; */
   padding-top: 70px;
   width: 100vw;
-  height: 90vh;
+  height: 100vh;
   overflow: hidden;
+  max-width: 1920px;
+
 }
 
 
 .iframe {
+  background-color: black;
   position: absolute;
   top: -9vh;
   border: 1px solid rgb(161, 145, 145);

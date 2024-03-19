@@ -3,6 +3,7 @@
   justify-content: center;
   position: relative;
   width: 100%;
+  max-width: 1920px;
   height: 100vh;
   background-image: url("/src/assets/greg-rakozy-oMpAz-DN-9I-unsplash.webp");
   background-size: cover;

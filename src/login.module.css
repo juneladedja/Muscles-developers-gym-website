@@ -3,17 +3,44 @@
   display: flex;
   z-index: 55;
   align-items: center;
-  height: 100% !important;
+  height: 110% !important;
   width: 100%;
   pointer-events: all;
   border-radius: 8px;
+  padding: 0;
+  background-image: url(./assets/sfondoLogin.jpg);
+  background-size: cover;
+
+  /* background-color: #ffffff; */
 }
+
+.input {
+  background-color: #30324580;
+  border-radius: 8px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 11px;
+  height: 100%;
+  min-height: 25px;
+  outline: 0;
+  padding: 4px 20px 0;
+  text-shadow: 1px 1px 1px #00000052;
+
+}
+
+/* .btn {
+  cursor: pointer;
+
+} */
 
 .login_container_form {
   position: relative;
   text-shadow: 1px 1px 1px #00000052;
   color: white;
   margin-left: 16%;
+  margin-top: auto;
+  margin-bottom: auto;
   padding: 50px;
   border-radius: 8px;
   position: absolute;
@@ -21,21 +48,36 @@
   flex-direction: column;
   justify-content: center;
   width: 400px;
-  height: fit-content;
+  height: 400px;
+  border-radius: 8px;
   background-color: rgba(71, 71, 71, 0.137);
   backdrop-filter: blur(10px);
   --webkit-backdrop-filter: blur(10px);
+  animation: slide-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
+
+
+}
+@keyframes slide-bottom {
+  0% {
+    transform: translateY(-45px);
+  }
+  100% {
+    transform: translateY(-35px);
+  }
 }
 
 
-@media (max-width: 600px) {
+
+@media (max-width: 650px) {
   .login_container_form {
     margin: 0;
   }
   .login_container {
     justify-content: center;
   }
+
+  
 }
 
 .login_container_form h2 {
@@ -54,6 +96,9 @@
   background-color: transparent;
   color: white;
   border: none;
+  text-shadow: 1px 1px 1px #00000052;
+  cursor: pointer;
+
 }
 
 .register::after {
@@ -80,17 +125,18 @@
   width: 650px;
   position: relative;
   margin-left: auto;
-  margin-top: 0;
+  margin-bottom: 0;
   z-index: -1;
+  height: 100%;
 }
 
 .fade_out{
   opacity: 0;
-  transition: opacity 0.3s ease-out;
+  transition: opacity 0.4s ease-out;
 }
 
 .fade_in {
   opacity: 1;
-  transition: opacity 0.3s ease-in;
+  transition: opacity 0.4s ease-in;
 }
 
