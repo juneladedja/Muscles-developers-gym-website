@@ -44,7 +44,7 @@ function Planets() {
     setIsSelected(() => false); 
     setTimeout(() => {
       setIsSelected(() => true);
-    }, 400);
+    }, 300);
   }, [selectedOption]);
 
   const planetSlide = isSelected

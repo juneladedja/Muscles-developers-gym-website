@@ -4,9 +4,9 @@ import MyDatePicker from "./DatePicker";
 import { useContext } from "react";
 import { GlobalContext } from "./GlobalContext";
 import Modal from "react-modal";
+import { useNavigate } from "react-router-dom";
 
 function Drop() {
-  // const [isPlanetSelected, setIsPlanetSelected] = useState(false);
   const {
     adults,
     setAdults,
@@ -21,11 +21,15 @@ function Drop() {
     selectedDate,
     setSelectedDate,
     log,
+    bookings,
+    setBookings,
+    scrollBlocked,
+    bookDestination,
+    newBooking,
+    setNewBooking,
   } = useContext(GlobalContext);
 
-
-
-  console.log(selectedOption);
+  // console.log(selectedOption);
 
   function increaseAdults() {
     setAdults(adults + 1 <= 10 ? adults + 1 : 10);
@@ -75,12 +79,26 @@ function Drop() {
   };
 
   const handleConfirm = () => {
+    const newBooking1 = {
+      adults: adults,
+      child: child,
+      baggages: baggages,
+      selectedOption: selectedOption,
+      selectedDate: String(selectedDate),
+    };
+
+    bookDestination(newBooking1);
+    // localStorage.setItem("bookings", JSON.stringify(bookings));
+    localStorage.setItem(
+      "bookings",
+      JSON.stringify([...bookings, newBooking1])
+    );
+
     setAdults(0);
     setChild(0);
     setBaggages(0);
     setSelectedOption("");
     setSelectedDate("");
-    log();
 
     console.log("Modulo inviato!");
 
@@ -96,6 +114,11 @@ function Drop() {
   console.log(selectedDate);
 
   /* ----------------prices-------------------- */
+
+  const navigate = useNavigate();
+  function goToBook() {
+    navigate("../book");
+  }
 
   return (
     <div className="container">
@@ -180,7 +203,7 @@ function Drop() {
           >
             Add to cart
           </button>
-          <button>Go to my books</button>
+          <button onClick={goToBook}>Go to my books</button>
         </div>
       </div>
 

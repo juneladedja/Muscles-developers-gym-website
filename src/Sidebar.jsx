@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./sidebar.css";
 import Profile from "./Profile";
+import { useContext } from "react";
+import { GlobalContext } from "./GlobalContext";
 
 function Sidebar() {
+
+  const { scrollBlocked,setScrollBlocked} = useContext(GlobalContext)
   // const { showProfile, setShowProfile } = useContext(SideContext);
   const [expanded, setExpanded] = useState(false);
   const [ready, setReady] = useState(false);
 
 
-  const [scrollBlocked, setScrollBlocked] = useState(false);
+  // const [scrollBlocked, setScrollBlocked] = useState(false);
   const [overlay, setOverlay] = useState(false)
   const toggleScroll = () => {
     setScrollBlocked(!scrollBlocked);

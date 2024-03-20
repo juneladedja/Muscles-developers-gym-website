@@ -9,7 +9,7 @@ import { Footer } from "./Footer";
 import { Explore } from "./Explore";
 import "./HomePage.css"
 import Destination from "./Destination";
-
+import { Tuta } from "./Tuta";
 
 
 function Homepage() {
@@ -17,7 +17,7 @@ function Homepage() {
     const scrollTo100vh = () => {
       setTimeout(() => {
         window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
-      }, 3000);
+      }, 3500);
     };
 
     scrollTo100vh();
@@ -34,6 +34,7 @@ function Homepage() {
       {/* <ActiveSlider id="section1"></ActiveSlider> */}
       <Destination id="section1"></Destination>
       <Explore id="section2"></Explore>
+      {/* <Tuta></Tuta> */}
       <SolarSystem id="section3"></SolarSystem>
       <News id="section4"></News>
       <Footer></Footer>

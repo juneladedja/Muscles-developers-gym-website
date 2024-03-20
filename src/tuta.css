@@ -1,0 +1,223 @@
+.section-tuta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+  height: 100vh;
+  border: 1px solid red;
+}
+.titolo-suit {
+  color: white;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid red;
+}
+
+.main {
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  box-sizing: border-box;
+  padding: 3em;
+}
+
+/* .main::before,
+.main::after {
+  border: 1px solid rgb(0, 38, 255);
+
+  content: "";
+  width: 600px;
+  height: 0;
+  box-sizing: inherit;
+  margin-top: 30px;
+  margin-bottom: -30px;
+  border: 3px solid transparent;
+  position: absolute;
+} */
+
+.main::before {
+  top: 0;
+  left: 0;
+}
+
+.main::after {
+  bottom: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.main:hover::before {
+  width: 100%;
+  height: 110%;
+}
+
+.main:hover::before {
+  border-top-color: #787878;
+  border-right-color: #787878;
+  transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
+}
+
+.product__image {
+  z-index: 99;
+  width: 500px;
+  transition: 0.5s;
+  border: 1px solid red;
+}
+
+/* .product__image:hover {
+  margin-left: -70px;
+} */
+
+.tuta-container {
+  width: fit-content;
+  height: 200px;
+  margin-top: 20px;
+}
+
+.title {
+  border: 1px solid red;
+  width: fit-content;
+  font-size: 35px;
+  color: #ffffff;
+  margin-bottom: 50px;
+  transition: all 1s;
+  z-index: 9;
+}
+.title > span {
+  font-size: 18px;
+  display: block;
+  color: #ffffff;
+}
+.desc {
+  border: 1px solid red;
+  padding-top: 20px;
+  padding-left: 10px;
+  max-width: 400px;
+  font-size: 21px;
+  color: #ffffff;
+  line-height: 1.8;
+  position: relative;
+  transition: all 1s;
+}
+.main:hover .container .title,
+.main:hover .container .desc {
+  left: 40%;
+}
+
+.table-tuta {
+  display: flex;
+  padding: 0 30px;
+  border: 1px solid red;
+  color: white;
+  width: 30%;
+  border: 1px solid white;
+  border-collapse: collapse;
+  position: relative;
+  width: fit-content;
+  min-width: 320px;
+  max-width: 450px;
+  transition: transform 0.8s ease-in-out;
+}
+
+.main:hover .table-tuta {
+  transform: translateX(100%);
+}
+
+/* th,
+td {
+  border: 1px solid rgb(255, 255, 255);
+  padding: 8px;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+} */
+
+@media screen and (max-width: 800px) {
+  .product__image {
+    z-index: 99;
+    width: 300px;
+    transition: 0.5s;
+  }
+
+  .product__image:hover {
+    margin-left: -70px;
+  }
+
+  .tuta-container {
+    width: 600px;
+    height: 400px;
+    margin-top: 20px;
+  }
+
+  .main:hover::before {
+    width: 90%;
+    height: 100%;
+  }
+
+  .table-tuta {
+    width: 30%;
+    border-collapse: collapse;
+    position: relative;
+  }
+
+  .main:hover .table-tuta {
+    transform: translateX(80%);
+  }
+
+  /* th,
+  td {
+    border: 1px solid rgb(255, 255, 255);
+    padding: 8px;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+  } */
+}
+
+@media screen and (max-width: 400px) {
+  .main {
+    position: static; /* Resetta la posizione */
+    width: auto;
+    height: auto;
+    padding: 1em; /* Riduci il padding per adattarsi meglio ai dispositivi mobili */
+    transform: none; /* Resetta la trasformazione */
+    margin-top: 50px; /* Aggiungi spazio sopra il contenuto */
+  }
+
+  .product__image {
+    position: static;
+    transform: none;
+    margin: 0 auto; /* Centra l'immagine orizzontalmente */
+    width: 80%; /* Riduci la larghezza dell'immagine per adattarsi meglio ai dispositivi mobili */
+    max-width: 300px; /* Imposta una larghezza massima */
+    display: block; /* Imposta l'immagine come blocco per centrarla correttamente */
+    margin-bottom: 20px; /* Spazio tra l'immagine e il titolo */
+  }
+
+  .tuta-container {
+    width: 100%; /* Larghezza massima */
+    text-align: center; /* Centra il testo */
+  }
+
+  .title {
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+
+  .desc {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 5px; /* Spazio tra la descrizione e la tabella */
+  }
+
+  .table-tuta {
+    width: 100%;
+    margin: 0 auto; /* Centra la tabella */
+  }
+}

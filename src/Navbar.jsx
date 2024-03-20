@@ -1,9 +1,13 @@
 import "./navbar.css";
 import Sidebar from "./Sidebar";
 import SideContextProvider from "./SideContext";
+import { GlobalContext } from "./GlobalContext";
+import { useContext } from "react";
+
 
 export function Navbar() {
-  
+  const { scrollBlocked } = useContext(GlobalContext);
+
   const handleLinkClick = (event, id) => {
     event.preventDefault();
     const element = document.getElementById(id);
@@ -15,7 +19,11 @@ export function Navbar() {
         <div className="Navbar-div">
           <h1 className="Nebula-span">Nebula</h1>
         </div>
-        <ul className="Nav-ul-container">
+        <ul
+          className={
+            scrollBlocked ? "Nav-ul-container-no-events " : "Nav-ul-container"
+          }
+        >
           <li className="li-container">
             <a
               href="#section1"
