@@ -1,0 +1,151 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "Michroma", sans-serif;
+  box-sizing: border-box;
+}
+
+.mySwiper {
+  background-color: black;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.card {
+  height: 500px;
+  margin: 50px;
+  /* box-shadow: 5px 5px 20px rgb(255, 255, 255); */
+  overflow: hidden;
+}
+
+.intro {
+  height: 70px;
+  width: 700px;
+  padding: 6px;
+  margin-bottom: 10px;
+  bottom: 100px;
+  box-sizing: border-box;
+  position: absolute;
+  background: rgb(27, 27, 27, 0);
+  color: rgb(255, 255, 255);
+  transition: 1s;
+}
+
+h1 {
+  margin: 10px;
+  font-size: 40px;
+  overflow: hidden;
+}
+
+p {
+  font-size: 10px;
+  margin: 20px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.intro p {
+  width: 600px;
+  width: fit-content;
+  padding: 2px;
+  bottom: 240px;
+  margin-left: -1px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card:hover .intro {
+  margin-left: -1px;
+  height: 220px;
+  bottom: 240px;
+  background: black;
+  opacity: 0.6;
+}
+
+.card:hover p {
+  opacity: 1;
+  visibility: visible;
+}
+
+.card:hover img {
+  transform: scale(1.1) rotate(-3deg);
+  transition: 10s;
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .img {
+    width: 100%;
+    height: auto;
+  }
+
+  .intro {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: rgb(27, 27, 27, 0.6);
+    color: rgb(255, 255, 255);
+    transition: 0.5s;
+    opacity: 0;
+    bottom: 0;
+  }
+
+  .card:hover .intro {
+    opacity: 1;
+  }
+
+  .intro h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .intro p {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .card {
+    height: 500px;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .intro {
+    height: 70px;
+    width: 700px;
+  }
+}

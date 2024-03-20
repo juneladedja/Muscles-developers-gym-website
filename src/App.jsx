@@ -1,9 +1,13 @@
 import { Footer } from "./Footer";
+import { NewsSection } from "./NewsSection";
+import { ScopridiPiù } from "./ScopridiPiù";
 
 function App() {
   return (
     <>
-      <Footer></Footer>
+    <ScopridiPiù/>
+    <NewsSection/>
+      <Footer/>
     </>
   );
 }
