@@ -1,0 +1,347 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.contenitore-tutto{
+    width: 100vw;
+}
+
+.astronauta-aboutus{
+width: 100vw;
+}
+
+.titolo-aboutus{
+    color: white;
+    font-size: 35px;
+    padding: 10px; /* Spaziatura interna */
+    margin-left: 50px;
+}
+
+.titolo-aboutus h2{
+    position: absolute;
+    margin-top: 200px;  /* sicuramente sbagliato !!!! */
+    display: flex;
+    margin-left: 120px;
+}
+
+.contenitore-story-nebula h3{
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.contenitore-story-nebula p{
+    color: white;
+    margin-bottom: 20px;
+    width: 70%;
+    display: flex;
+    margin: 0 auto;
+}
+
+.whoweare{
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-top: 20px;
+}
+
+.community-title{
+    display: flex; /* Imposta il display a flex per abilitare il layout flessibile */
+    align-items: center; /* Allinea gli elementi verticalmente al centro */
+    gap: 50px;
+    justify-content: center;
+}
+
+.community-title p{
+    font-size: 18px;
+    color: white;
+    margin-top: 30px;
+    width: 40%;
+    margin-left: 30px;
+}
+
+.community-title img{
+    width: 40%;
+    margin-top: 20px;
+}
+
+.spaceshuttle-title{
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-top: 20px;
+}
+
+.titolo-global-map h3{
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+.contenitore-spacushuttle{
+    display: flex; /* Imposta il display a flex per abilitare il layout flessibile */
+    justify-content: center; /* Allinea gli elementi verticalmente al centro */
+    gap: 50px;
+}
+
+.spaceshuttle{
+    width: 350px;
+}
+
+.contenitore-motore{
+    display: flex; /* Imposta il display a flex per abilitare il layout flessibile */
+    justify-content: center; /* Allinea gli elementi verticalmente al centro */
+    gap: 50px;
+}
+
+.contenitore-motore p{
+    color: white;
+    font-size: 18px;
+    color: white;
+    margin-top: 30px;
+    width: 40%;
+    margin-left: 30px;
+    align-items: center;
+    display: flex;
+}
+
+.engine{
+    width: 550px;
+}
+
+.contenitore-spacushuttle p{
+    color: white;
+    width: 40%;
+    display: flex;
+    align-items: center;
+}
+
+.riga-tabella {
+    display: flex;
+    color: white;
+}
+  
+.cella-tabella {
+    border-right: 1px solid white;
+    color: white;
+    margin-left: 20px;
+    margin-top: 20px;
+    flex: 1;
+    padding: 10px;
+    font-size: 28px;
+}
+
+  .cella-tabella1{
+    color: white;
+    margin-left: 20px;
+    margin-top: 20px;
+    flex: 1;
+    padding: 10px;
+    font-size: 28px;
+  }
+
+  .contenitore-tabella{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+.span-tabella{
+    font-size: 21px;
+}
+
+  .mappamondo img{
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+
+  .title-collaborators{
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 40px;
+  }
+  .contenitore-sponsor{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .Nasalogo {
+    width: 250px;
+    height: fit-content;
+  }
+
+  .Spacexlogo {
+    width: 250px;
+    height: fit-content;
+  }
+
+
+  @media screen and (max-width: 800px) {
+
+    .contenitore-tutto{
+        width: 100vw;
+    }
+
+    .titolo-aboutus {
+        font-size: 30px; /* Riduci la dimensione del testo */
+        top: 80%; /* Posiziona il titolo più in basso */
+        left: 50%; /* Centra il titolo */
+        transform: translateX(-50%); /* Centra il titolo orizzontalmente */
+    }
+
+    .titolo-aboutus h2 {
+        font-size: 30px; /* Riduci la dimensione del testo */
+    }
+    
+    .engine{
+        height: 400px;
+        justify-content: center;
+    }
+    .contenitore-motore p{
+        display: flex;
+        width: 70%;
+    }
+    .contenitore-motore{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .contenitore-sponsor{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+    
+      .Nasalogo {
+        width: 150px;
+        height: fit-content;
+      }
+    
+      .Spacexlogo {
+        width: 150px;
+        height: fit-content;
+      }
+  }
+
+  @media screen and (max-width: 400px) {
+    .contenitore-tutto{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+    }
+
+    .contenitore-story-nebula p{
+        width: 90%;
+    }
+
+    .astronauta-aboutus{
+        width: 100%;
+        margin-top: -70px;
+    }
+
+    .community-title{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .community-title p{
+        display: flex;
+        width: 90%;
+    }
+
+    .community-title img{
+        width: 400px;
+        justify-content: center;
+        width: 90%;
+    }
+
+    .contenitore-spacushuttle{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .spaceshuttle{
+        height: 400px;
+        justify-content: center;
+    }
+
+    .contenitore-spacushuttle p{
+        display: flex;
+        width: 90%;
+    }
+
+    .engine{
+        height: 400px;
+        justify-content: center;
+    }
+
+    .contenitore-motore p{
+        display: flex;
+        width: 90%;
+    }
+    .contenitore-motore{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        width: 90%;
+    }
+
+    .contenitore-tabella{
+        width: 90%;
+    }
+
+    .span-tabella{
+        font-size: 20px;
+    }
+
+    .cella-tabella{
+        font-size: 18px;
+    }
+
+    .span-tabella1{
+        font-size: 20px;
+    }
+
+    .cella-tabella1{
+        font-size: 18px;
+    }
+
+    .contenitore-sponsor{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 90%;
+      }
+    
+      .Nasalogo {
+        width: 90px;
+        height: fit-content;
+      }
+    
+      .Spacexlogo {
+        width: 90px;
+        height: fit-content;
+      }
+  }

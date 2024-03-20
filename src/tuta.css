@@ -195,6 +195,16 @@ body {
         margin-bottom: 20px; /* Spazio tra l'immagine e il titolo */
     }
 
+    .product__image:hover{
+      margin-left:0px;
+    }
+
+    .main:hover::before {
+      border-top-color:unset;
+      border-right-color: unset;
+      transition: none;
+    }
+
     .container {
         width: 100%; /* Larghezza massima */
         text-align: center; /* Centra il testo */

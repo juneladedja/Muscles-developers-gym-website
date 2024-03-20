@@ -1,13 +1,12 @@
-
+import { Aboutus } from './Aboutus'
 import './App.css'
-import { Tuta } from './Tuta'
 
 
 function App() {
 
   return (
     <>
-      <Tuta/>
+    <Aboutus/>
     </>
   )
 }
