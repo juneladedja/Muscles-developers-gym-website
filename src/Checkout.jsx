@@ -20,7 +20,7 @@ export function Checkout() {
         setShowSummary(true);
         setProgressStep(3);
         console.log("Billing Data:", JSON.stringify(billingData));{/* eseguo un console log solo dei dati di fatturazione */}
-
+n
     };
 
     const handleFormChange = (e) => {
