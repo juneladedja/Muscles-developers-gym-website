@@ -27,7 +27,8 @@ function Drop() {
     bookDestination,
     newBooking,
     setNewBooking,
-    totalPrice, setTotalPrice
+    totalPrice,
+    setTotalPrice,
   } = useContext(GlobalContext);
 
   // console.log(selectedOption);
@@ -80,14 +81,13 @@ function Drop() {
   };
 
   const handleConfirm = () => {
-    
     const newBooking1 = {
       adults: adults,
       child: child,
       baggages: baggages,
       selectedOption: selectedOption,
       selectedDate: String(selectedDate),
-      totalPrice:totalPrice
+      totalPrice: totalPrice,
     };
 
     bookDestination(newBooking1);

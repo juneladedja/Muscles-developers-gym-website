@@ -34,7 +34,7 @@ function HeroContent({ id }) {
   return (
     <>
       <div className="hero-content" id={id}>
-        <div className="phrase">
+        {/* <div className="phrase">
           <div className= {`to ${showFirst ? "to phrase-holder" : "prev-holder hidden1"}`}>
             <p className={` ${showFirst ? "prhase-show" : "phrase-hidden"}`}>
               to
@@ -55,7 +55,7 @@ function HeroContent({ id }) {
               beyond
             </p>
           </div>
-        </div>
+        </div> */}
         <div className="star-animation">
           <span className="star-span"></span>
           <span className="star-span"></span>

@@ -60,7 +60,6 @@ function Book() {
                   <li className="book-item" key={index}>
                     <strong>adults : {booking.adults}</strong>
                     <strong>children : {booking.child}</strong>
-                    <strong>adults : {booking.baggages}</strong>
                     <strong>destination : {booking.selectedOption}</strong>
                     <strong>selected date : {booking.selectedDate}</strong>
                     <strong>price: : {booking.totalPrice}</strong>
