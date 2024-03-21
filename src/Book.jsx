@@ -54,23 +54,25 @@ function Book() {
           {savedBookings.length === 0 ? (
             <p>No books</p>
           ) : (
-            <ul className="book-list">
-              {savedBookings.map((booking, index) => (
-                <li className="book-item" key={index}>
-                  <strong>adults : {booking.adults}</strong>
-                  <strong>children : {booking.child}</strong>
-                  <strong>adults : {booking.baggages}</strong>
-                  <strong>destination : {booking.selectedOption}</strong>
-                  <strong>selected date : {booking.selectedDate}</strong>
-                  <strong>price: : {booking.totalPrice}</strong>
-                  <button onClick={() => deleteItem(index)}>delete</button>
-                </li>
-              ))}
-            </ul>
+            <>
+              <ul className="book-list">
+                {savedBookings.map((booking, index) => (
+                  <li className="book-item" key={index}>
+                    <strong>adults : {booking.adults}</strong>
+                    <strong>children : {booking.child}</strong>
+                    <strong>adults : {booking.baggages}</strong>
+                    <strong>destination : {booking.selectedOption}</strong>
+                    <strong>selected date : {booking.selectedDate}</strong>
+                    <strong>price: : {booking.totalPrice}</strong>
+                    <button onClick={() => deleteItem(index)}>delete</button>
+                  </li>
+                ))}
+              </ul>
+              <div className="total-resume">
+                <p>Total : {calculateTotal()} </p>
+              </div>
+            </>
           )}
-          <div className="total-resume">
-            <p>Total : {calculateTotal()} </p>
-          </div>
 
           <div className="btn-container-book">
             <button onClick={backToHome}>back</button>

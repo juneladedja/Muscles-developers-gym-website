@@ -33,6 +33,12 @@ function Profile({ expanded, ready, setReady, setExpanded }) {
     }, 500);
   };
 
+
+  const logout = () => {
+    localStorage.removeItem("formData");
+    window.location.href = "/"; // Replace "/" with your landing page URL
+  };
+
   return (
     <>
       <div
@@ -62,6 +68,7 @@ function Profile({ expanded, ready, setReady, setExpanded }) {
                 </div>
               </div>
             )}
+            <button onClick={logout}>Logout</button>
           </div>
         </div>
       </div>
