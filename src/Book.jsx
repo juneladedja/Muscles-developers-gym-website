@@ -25,11 +25,15 @@ function Book() {
     localStorage.setItem("bookings", JSON.stringify(updatedBookings));
     // setBookings(() => updatedBookings);
   }
-  const navigateToHome = useNavigate()
-  function backToHome(){
+  const navigateToHome = useNavigate();
+  function backToHome() {
     navigateToHome("../homepage");
   }
 
+  const checkout = useNavigate();
+  function goToPayment() {
+    checkout("../checkout");
+  }
   return (
     <>
       <div className="book-container">
@@ -49,7 +53,7 @@ function Book() {
             ))}
           </ul>
           <button onClick={backToHome}>back</button>
-
+          <button onClick={goToPayment}>proceed to payment</button>
         </div>
       </div>
     </>

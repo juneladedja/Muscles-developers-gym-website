@@ -10,6 +10,7 @@ import Homepage from "./Homepage";
 import LandingPage from "./LandingPage";
 import { useEffect } from "react";
 import Book from "./Book";
+import  Checkout  from "./Checkout";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<LandingPage></LandingPage>}></Route>
         <Route path="/homepage" element={<Homepage></Homepage>}></Route>
         <Route path="/book" element={<Book></Book>}> </Route>
+        <Route path="/checkout" element={<Checkout></Checkout>}></Route>
       </Routes>
     </>
   );

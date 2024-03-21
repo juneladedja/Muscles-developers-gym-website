@@ -3,6 +3,7 @@ import "./sidebar.css";
 import Profile from "./Profile";
 import { useContext } from "react";
 import { GlobalContext } from "./GlobalContext";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar() {
 
@@ -32,6 +33,10 @@ function Sidebar() {
       setReady(!ready);
     }, 400);
   };
+const navigateBook = useNavigate()
+  function handleBookPage(){
+    navigateBook("../book")
+  }
 
   return (
     <>
@@ -51,7 +56,7 @@ function Sidebar() {
           <button onClick={toggleProfile}>
             <span className="underline">Profile</span>
           </button>
-          <button>
+          <button onClick={handleBookPage}>
             <span className="underline">My bookings</span>
           </button>
           <button>
