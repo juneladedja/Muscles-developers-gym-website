@@ -4,19 +4,17 @@ export const GlobalContext = createContext();
 function GlobalProvider({ children }) {
   const [scroll, setScroll] = useState(false);
 
-
   const [selectedDate, setSelectedDate] = useState("");
   const [adults, setAdults] = useState(0);
   const [child, setChild] = useState(0);
   const [baggages, setBaggages] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
-
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const [showOptions, setShowOptions] = useState(false);
 
   const [bookings, setBookings] = useState([]);
   const [scrollBlocked, setScrollBlocked] = useState(false);
-
 
   // useEffect(() => {
   //   // Carica le prenotazioni dal localStorage quando il componente viene montato
@@ -31,7 +29,6 @@ function GlobalProvider({ children }) {
   //   localStorage.setItem("bookings", JSON.stringify(bookings));
   // }, [bookings]);
 
-
   function log() {
     console.log({
       adults: adults,
@@ -43,7 +40,7 @@ function GlobalProvider({ children }) {
   }
 
   function bookDestination(newBooking) {
-    setBookings(bookings => [...bookings, newBooking]);
+    setBookings((bookings) => [...bookings, newBooking]);
     localStorage.setItem("bookings", JSON.stringify(bookings));
 
     console.log(bookings);
@@ -54,10 +51,8 @@ function GlobalProvider({ children }) {
     setTimeout(() => {
       console.log("settimeout");
       console.log(bookings);
-
     }, 3000);
-
-  },[bookings])
+  }, [bookings]);
   const planetBackgrounds = {
     moon: "linear-gradient(135deg, #4F74C0, #24395C)",
     mars: "linear-gradient(135deg, #D74B4B, #673E3E)",
@@ -91,6 +86,8 @@ function GlobalProvider({ children }) {
     scrollBlocked,
     setScrollBlocked,
     bookDestination,
+    totalPrice,
+    setTotalPrice,
   };
   return (
     <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>

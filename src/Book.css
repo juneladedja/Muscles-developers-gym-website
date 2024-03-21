@@ -1,13 +1,11 @@
-
-
-.book-container{
+.book-container {
   display: flex;
   width: 100%;
   height: 100vh;
   background-color: black;
 }
 
-.book{
+.book {
   color: white;
 
   display: flex;
@@ -25,21 +23,67 @@
   justify-content: center;
   padding: 30px;
   overflow-y: scroll;
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-.book-list{
+.book-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
   list-style: none;
-  border: 1px solid red;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 8px;
   width: 100%;
-  height: 100%;
+  overflow-y: scroll;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-.book-item{
+.book-list::-webkit-scrollbar {
+  display: none;
+}
+
+.book-item {
   font-size: 12px;
-  border: 1px solid rgb(0, 255, 115);
+  border: 1px solid gray;
   border-radius: 8px;
   width: fit-content;
   height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin:  20px auto;
+}
+
+.book-item strong {
+  margin-bottom: 5px;
+}
+
+.book-item button {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.btn-container-book {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: auto;
+}
+
+.btn-container-book button {
+  width: 45%;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+.total-resume{
+  width: fit-content;
+  height: 40px;
+  margin-left: auto;
+  margin-top: auto;
+  padding: 10px;
 }

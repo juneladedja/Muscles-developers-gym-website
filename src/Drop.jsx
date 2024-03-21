@@ -27,6 +27,7 @@ function Drop() {
     bookDestination,
     newBooking,
     setNewBooking,
+    totalPrice, setTotalPrice
   } = useContext(GlobalContext);
 
   // console.log(selectedOption);
@@ -69,7 +70,7 @@ function Drop() {
 
   const [showModal, setShowModal] = useState(false);
 
-  const [totalPrice, setTotalPrice] = useState(0);
+  // const [totalPrice, setTotalPrice] = useState(0);
 
   const handleSubmit = () => {
     const totalPrices = adults * 70000 + child * 50000 + baggages * 1000;
@@ -79,12 +80,14 @@ function Drop() {
   };
 
   const handleConfirm = () => {
+    
     const newBooking1 = {
       adults: adults,
       child: child,
       baggages: baggages,
       selectedOption: selectedOption,
       selectedDate: String(selectedDate),
+      totalPrice:totalPrice
     };
 
     bookDestination(newBooking1);

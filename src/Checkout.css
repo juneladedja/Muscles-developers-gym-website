@@ -1,30 +1,29 @@
-.checkoutContainer{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
+.checkoutContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
 }
 
-.headerContainer{
-    width: fit-content;
-    height: fit-content;
-    margin-left: auto;
-    margin-right: 40px;
+.headerContainer {
+  width: fit-content;
+  height: fit-content;
+  margin-left: auto;
+  margin-right: 40px;
 }
 
 /* .menu-icons-container{
     border: 1px solid wheat;
 } */
 
-.progress-checkout-container{
-    width: fit-content;
-    width: 100%;
-    display: flex;
-    margin-top: 50px;
-    justify-content: space-around;
-
+.progress-checkout-container {
+  width: fit-content;
+  width: 100%;
+  display: flex;
+  margin-top: 50px;
+  justify-content: space-around;
 }
 
 /* .step-check{
@@ -61,52 +60,64 @@
     flex-direction: column;
 } */
 
-.form-container{
-    border: 1px solid grey;
-    border-radius: 8px;
-    margin: auto;
-    width: 70vw;
-    max-width: 500px;
-    height: fit-content;
-    max-height: 600px;
-    padding: 10px;
+.form-container {
+  border: 1px solid grey;
+  border-radius: 8px;
+  margin: auto;
+  width: 70vw;
+  max-width: 500px;
+  height: fit-content;
+  max-height: 600px;
+  padding: 10px;
 }
 
-.form-title{
-    margin: 20px auto;
-    width: fit-content;
-    font-size: 22px;
+.form-title {
+  margin: 20px auto;
+  width: fit-content;
+  font-size: 22px;
 }
 
-.checkout-form{
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.checkout-form {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.input-line{
-    margin:10px;
+.input-line {
+  margin: 10px;
 }
 
-.purchase-btn{
-    margin-top: 20px;
-    background-color: transparent;
-    color: white;
-    border: 1px solid gray;
-    padding: 5px;
-    border-radius: 4px;
+.purchase-btn {
+  margin-top: 20px;
+  background-color: transparent;
+  color: white;
+  border: 1px solid gray;
+  padding: 5px;
+  border-radius: 4px;
 }
 
-
-.summary-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-
+.summary-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
 
 .summary-container > h3 {
-    margin-top: 20px;
+  margin-top: 20px;
+}
+
+.goBackHome {
+  width: fit-content;
+  margin: 40px auto;
+}
+
+.goBackHome button {
+  border-radius: 5px;
+  border: 1px solid red;
+  background-color: transparent;
+  border: 1px solid gray;
+  color: white;
+  padding: 5px;
 }
