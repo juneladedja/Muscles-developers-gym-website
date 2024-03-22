@@ -3,6 +3,7 @@ import "./Checkout.css";
 import PaymentDetailsForm from "./PaymentDetailsForms";
 import BillingAddressForm from "./BillingAddressForm";
 import OrderSummary from "./OrderSummary";
+import { useNavigate } from "react-router-dom";
 
 function Checkout() {
   const [showBillingAddress, setShowBillingAddress] = useState(false);
@@ -23,7 +24,6 @@ function Checkout() {
     }));
     console.log(billingData);
   }
-
 
   const handleCompletePurchase = () => {
     setShowBillingAddress(true);
@@ -48,10 +48,17 @@ function Checkout() {
     }
   };
 
+  const navigateHome = useNavigate()
+  function backHome(){
+    navigateHome("../homepage")
+  }
+
   return (
     <div className="checkoutContainer">
       <div className="headerContainer">
         <div className="menu-icons-container">
+          <button className="purchase-btn" onClick={backHome}>home</button>
+
           <button className="purchase-btn" onClick={handleBack}>
             back
           </button>
@@ -98,7 +105,6 @@ function Checkout() {
             handleFormChange={handleFormChange}
             billingData={billingData}
             setBillingData={setBillingData}
-
           />
         )}
 

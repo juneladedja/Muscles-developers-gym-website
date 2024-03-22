@@ -22,12 +22,20 @@ const PaymentDetailsForm = ({ onCompletePurchase }) => {
       const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+        
       };
+
+      function handleSubmitPayment(e){
+        e.preventDefault()
+        localStorage.setItem("paymentFormData", JSON.stringify(formData));
+        onCompletePurchase();
+
+      }
     
       return (
         <div>
           <h2 className="form-title">Payment Details</h2>
-          <form action="" className="checkout-form">
+          <form action="" className="checkout-form" onSubmit={handleSubmitPayment} >
             <div className="input-line">
               <label htmlFor="name">Name on card</label>
               <br />
@@ -49,6 +57,8 @@ const PaymentDetailsForm = ({ onCompletePurchase }) => {
                 name="cardNumber"
                 id="cardNumber"
                 placeholder="1111-2222-3333-4444"
+                pattern="\d{4}-\d{4}-\d{4}-\d{4}"
+                title="Please enter a valid card number in the format: 1111-2222-3333-4444"
                 value={formData.cardNumber}
                 onChange={handleChange}
               />
@@ -62,6 +72,8 @@ const PaymentDetailsForm = ({ onCompletePurchase }) => {
                   name="expiringDate"
                   id="expiringDate"
                   placeholder="09-21"
+                  pattern="\d{2}-\d{2}"
+                  title="Please enter a valid expiring date in the format: MM-YY"
                   value={formData.expiringDate}
                   onChange={handleChange}
                 />
@@ -74,6 +86,8 @@ const PaymentDetailsForm = ({ onCompletePurchase }) => {
                   name="cvc"
                   id="cvc"
                   placeholder="***"
+                  pattern="\d{3}"
+                  title="Please enter a valid CVC code consisting of 3 digits"
                   value={formData.cvc}
                   onChange={handleChange}
                   required
@@ -81,9 +95,8 @@ const PaymentDetailsForm = ({ onCompletePurchase }) => {
               </div>
             </div>
             <button
-              type="button"
+              type="submit"
               value="confirm card"
-              onClick={onCompletePurchase}
               className="purchase-btn"
               disabled={!isFormValid}
             >

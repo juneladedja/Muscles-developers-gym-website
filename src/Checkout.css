@@ -14,9 +14,15 @@
   margin-right: 40px;
 }
 
-/* .menu-icons-container{
-    border: 1px solid wheat;
-} */
+.menu-icons-container{
+  width: 100vw;
+  max-width: 1920px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 0 5%;
+}
 
 .progress-checkout-container {
   width: fit-content;
