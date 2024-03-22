@@ -38,16 +38,17 @@
 .news-img {
   border-radius: 3px;
   margin: auto;
-  width: 200%;
+  width: 100%;
   margin-left: 0;
 }
 
 @media(max-width: 800px){
   .news-img {
     border-radius: 3px;
-    margin: auto;
-    height: 100%;
+    /* margin: auto; */
     margin-left: 0;
+    /* width: 160%; */
+    height: 100%;
     width: unset;
   }
   

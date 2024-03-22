@@ -7,7 +7,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Spaceximg from "./assets/starship-flight3-hires.webp";
 import Stazione from "./assets/stazione.jpg";
 import Kepler from "./assets/Kepler22b.jpg";
-import Satellite from "./assets/geosatellite.webp";
+import Satellite from "./assets/satellite.jpg";
 
 function News({ id }) {
   const Cards = [
