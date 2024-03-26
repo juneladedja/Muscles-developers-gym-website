@@ -22,13 +22,9 @@ export function Tuta() {
                 thermal insulation, radiation resistance, and protection against
                 micrometeoroids.
               </p>
-            </div>
-
-            <div className="table-tuta">
-              <p>50% LIGHTER</p>
-              <p> WATERPROOF </p>
-              <div>
-                RECYCLED <br /> MATERIALS
+              <div className="table-tuta">
+                <p className="lighter">50% LIGHTER WATERPROOF </p>
+                <p className="recycled">RECYCLED MATERIALS</p>
               </div>
             </div>
           </div>

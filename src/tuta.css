@@ -4,38 +4,35 @@
   flex-direction: column;
   justify-content: center;
   width: 90%;
-  margin: 0 auto;
-  height: 100vh;
-  border: 1px solid rgb(0, 0, 255);
-  overflow: hidden;
+  height: 80vh;
+  margin: 110px auto 0 auto;
 }
 .titolo-suit {
   color: white;
   font-size: 30px;
   display: flex;
   justify-content: center;
-  border: 1px solid red;
+  padding-bottom: 20px;
 }
 
 .main {
-
   position: relative;
   display: flex;
   justify-content: center;
-  border: 2px solid green;
-  width: fit-content;
+
+  height: 70vh;
+  margin: 0 auto;
+  padding: 10px;
 }
 
 .main::before,
 .main::after {
-  border: 1px solid rgb(0, 38, 255);
-
   content: "";
-  width: 50%;
+  width: 0%;
   height: 0;
   box-sizing: inherit;
-  margin-top: 30px;
-  margin-bottom: -30px;
+  /* margin-top: 30px; */
+  /* margin-bottom: -30px; */
   border: 3px solid transparent;
   position: absolute;
 }
@@ -51,31 +48,27 @@
 }
 
 .main:hover::before {
-  width: fit-content;
+  border-top-color: #787878;
+  border-right-color: #787878;
+  transition: width 0.3s ease-out, height 0.25s ease-out 0.25s;
+}
+.main:hover::before {
+  width: 100%;
   height: 100%;
 }
 
-.main:hover::before {
-  border-top-color: #787878;
-  border-right-color: #787878;
-  transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
-}
-
 .product__image {
-  width: 33vw;
-  transition: 0.5s;
-  border: 1px solid red;
+  height: 100%;
 }
 
 .tuta-container {
-  width: fit-content;
+  width: 100%;
   height: 200px;
 }
 
 .title {
-  border: 1px solid rgb(0, 255, 13);
   width: fit-content;
-  font-size: 35px;
+  font-size: 25px;
   color: #ffffff;
   margin-bottom: 50px;
   transition: all 1s;
@@ -87,38 +80,61 @@
   color: #ffffff;
 }
 .desc {
-  border: 1px solid red;
   padding-top: 20px;
-  padding-left: 10px;
+  /* padding-left: 10px; */
   max-width: 400px;
   font-size: 14px;
   color: #ffffff;
   position: relative;
   transition: all 1s;
 }
-.main:hover .container .title,
-.main:hover .container .desc {
+/* .main:hover .container .title,
+.main:hover .container .table-tuta {
   left: 40%;
-}
+} */
 
 .table-tuta {
-  display: flex;
-  padding: 0 30px;
-  border: 1px solid rgb(21, 255, 0);
+  /* position: absolute; */
+  display: block;
   color: white;
-  width: 30%;
   border: 1px solid white;
   border-collapse: collapse;
-  position: relative;
-  width: fit-content;
-  transition: transform 0.8s ease-in-out;
+  position: absolute;
+  font-size: 13px;
+  height: fit-content;
+  margin: 20px 20px 20px 0;
+  left: 30%;
+  min-width: 250px;
+  opacity: 0;
+}
+.lighter {
+  display: flex;
+  justify-content: center;
+  font-family: "Courier New", Courier, monospace;
+  border: 1px solid white;
+  height: 100%;
+  margin: 0 auto;
 }
 
+.recycled {
+  font-family: "Courier New", Courier, monospace;
+  border: 1px solid white;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 
-@media screen and (max-width: 800px) {
+}
+.main:hover .table-tuta {
+  transition: all 0.8s ease-in-out; /* Aggiungi la transizione anche per la proprietà left */
+
+  opacity: 1;
+  left: 50%;
+}
+
+/* @media screen and (max-width: 800px) {
 
   .main:hover::before {
-    width: 60%;
+    width: 100%;
     height: 100%;
   }
 
@@ -132,14 +148,14 @@
 
   }
 
-}
+} */
 
 @media screen and (max-width: 400px) {
   .main {
     position: static; /* Resetta la posizione */
     width: auto;
     height: auto;
-    padding: 1em; /* Riduci il padding per adattarsi meglio ai dispositivi mobili */
+    /* padding: 1em; Riduci il padding per adattarsi meglio ai dispositivi mobili */
     transform: none; /* Resetta la trasformazione */
   }
 
@@ -159,7 +175,7 @@
   }
 
   .title {
-    font-size: 30px;
+    font-size: 10px;
     margin-bottom: 40px;
   }
 
