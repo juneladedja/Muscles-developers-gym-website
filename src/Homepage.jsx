@@ -34,7 +34,7 @@ function Homepage() {
       {/* <ActiveSlider id="section1"></ActiveSlider> */}
       <Destination id="section1"></Destination>
       <Explore id="section2"></Explore>
-      {/* <Tuta></Tuta> */}
+      <Tuta></Tuta>
       <SolarSystem id="section3"></SolarSystem>
       <News id="section4"></News>
       <Footer></Footer>

@@ -2,25 +2,25 @@ import React, { useContext, useEffect, useState } from "react";
 import "./Planets.css";
 import { GlobalContext } from "./GlobalContext";
 
-import moon from "./assets/moon.png";
-import mars from "./assets/mars.png";
-import jupiter from "./assets/jupiter.png";
-import mercury from "./assets/mercury.png";
-import saturn from "./assets/saturn.png";
-import neptune from "./assets/neptune.png";
-import uranus from "./assets/uranus.png";
-import venus from "./assets/venus.png";
+import Moon from "./assets/Moon.png";
+import Mars from "./assets/Mars.png";
+import Jupiter from "./assets/Jupiter.png";
+import Mercury from "./assets/Mercury.png";
+import Saturn from "./assets/Saturn.png";
+import Neptune from "./assets/Neptune.png";
+import Uranus from "./assets/Uranus.png";
+import Venus from "./assets/Venus.png";
 import placeholderImage from "./assets/Daco.png";
 
 const planetArr = [
-  moon,
-  mars,
-  venus,
-  mercury,
-  jupiter,
-  saturn,
-  neptune,
-  uranus,
+  Moon,
+  Mars,
+  Venus,
+  Mercury,
+  Jupiter,
+  Saturn,
+  Neptune,
+  Uranus,
 ];
 
 /* ----------------------------------------------- */

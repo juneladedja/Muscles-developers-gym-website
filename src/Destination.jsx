@@ -7,14 +7,14 @@ import { GlobalContext } from "./GlobalContext";
 function Destination({ id }) {
   const { selectedOption } = useContext(GlobalContext);
   const planetBackgrounds = {
-    moon: "moon-background",
-    mars: "mars-background",
-    venus: "venus-background",
-    mercury: "mercury-background",
-    jupiter: "jupiter-background",
-    saturn: "saturn-background",
-    neptune: "neptune-background",
-    uranus: "uranus-background",
+    Moon: "moon-background",
+    Mars: "mars-background",
+    Venus: "venus-background",
+    Mercury: "mercury-background",
+    Jupiter: "jupiter-background",
+    Saturn: "saturn-background",
+    Neptune: "neptune-background",
+    Uranus: "uranus-background",
   };
   const planetBackground = planetBackgrounds[selectedOption] || "none";
 

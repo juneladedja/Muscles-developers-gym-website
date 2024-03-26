@@ -64,6 +64,13 @@ function GlobalProvider({ children }) {
     uranus: "linear-gradient(135deg, #6EC8F4, #BFE9FF)",
   };
 
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+    rememberPassword: false,
+  });
+
   const value = {
     scroll,
     setScroll,
@@ -88,6 +95,8 @@ function GlobalProvider({ children }) {
     bookDestination,
     totalPrice,
     setTotalPrice,
+    formData,
+    setFormData,
   };
   return (
     <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>

@@ -139,29 +139,29 @@ function Drop() {
         />
         {showOptions && (
           <div className="options">
-            <div name="moon" onClick={() => show("moon")}>
-              moon
+            <div name="moon" onClick={() => show("Moon")}>
+              Moon
             </div>
-            <div name="mars" onClick={() => show("mars")}>
-              mars
+            <div name="mars" onClick={() => show("Mars")}>
+              Mars
             </div>
-            <div name="venus" onClick={() => show("venus")}>
-              venus
+            <div name="venus" onClick={() => show("Venus")}>
+              Venus
             </div>
-            <div name="mercury" onClick={() => show("mercury")}>
-              mercury
+            <div name="mercury" onClick={() => show("Mercury")}>
+              Mercury
             </div>
-            <div name="jupiter" onClick={() => show("jupiter")}>
-              jupiter
+            <div name="jupiter" onClick={() => show("Jupiter")}>
+              Jupiter
             </div>
-            <div name="saturn" onClick={() => show("saturn")}>
-              saturn
+            <div name="saturn" onClick={() => show("Saturn")}>
+              Saturn
             </div>
-            <div name="neptune" onClick={() => show("neptune")}>
-              neptune
+            <div name="neptune" onClick={() => show("Neptune")}>
+              Neptune
             </div>
-            <div name="uranus" onClick={() => show("uranus")}>
-              uranus
+            <div name="uranus" onClick={() => show("Uranus")}>
+              Uranus
             </div>
           </div>
         )}

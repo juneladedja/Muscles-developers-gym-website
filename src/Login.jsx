@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useContext , useState } from "react";
 import login from "./login.module.css";
 import astronaut from "./assets/loginImg.png";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { GlobalContext } from "./GlobalContext";
 
 function Login() {
+  const {formData, setFormData} = useContext(GlobalContext)
+
   const [isVisible, setIsVisible] = useState(true);
 
   const [log, setLog] = useState(true);
@@ -15,12 +19,12 @@ function Login() {
     }, 300);
   }
 
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    rememberPassword: false,
-  });
+  // const [formData, setFormData] = useState({
+  //   fullName: "",
+  //   email: "",
+  //   password: "",
+  //   rememberPassword: false,
+  // });
 
   const handleInputChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -34,12 +38,41 @@ function Login() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    localStorage.setItem("formData", JSON.stringify(formData));
-    console.log(formData);
-    navigate("/homepage");
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   localStorage.setItem("formData", JSON.stringify(formData));
+  //   console.log(formData);
+  //   navigate("/homepage");
+  // };
+
+  const handleSubmitRegister = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5000/api/register", {
+        fullName: formData.fullName,
+        email: formData.email,
+        password: formData.password
+      });
+      console.log(response.data);
+      navigate("/homepage")
+    } catch (error) {
+      console.error("Server error");
+    }
+  }
+
+  const handleSubmitLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5000/api/login", {
+        email: formData.email,
+        password: formData.password
+      })
+      console.log(response.data);
+      navigate("/homepage")
+    } catch (error) {
+      console.error("server error");
+    }
+  }
 
   const isRegisterComplete = () => {
     if (log) {
@@ -62,7 +95,7 @@ function Login() {
             className={`${login.login_container_form} ${
               isVisible ? login.fade_in : login.fade_out
             }`}
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmitLogin}
           >
             <h2>Nebula</h2>
 
@@ -114,7 +147,7 @@ function Login() {
             className={`${login.login_container_form} ${
               isVisible ? login.fade_out : login.fade_in
             }`}
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmitRegister}
           >
             <h2>Nebula</h2>
 
