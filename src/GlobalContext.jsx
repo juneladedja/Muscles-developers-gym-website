@@ -64,11 +64,25 @@ function GlobalProvider({ children }) {
     uranus: "linear-gradient(135deg, #6EC8F4, #BFE9FF)",
   };
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({});
+
+  const [registerData, setRegisterData] = useState({
     fullName: "",
     email: "",
     password: "",
+    confirmPassword: "",
     rememberPassword: false,
+  });
+
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+    rememberPassword: false,
+  });
+
+  const [userData, setUserData] = useState({
+    full_name: "",
+    email: "",
   });
 
   const value = {
@@ -97,6 +111,12 @@ function GlobalProvider({ children }) {
     setTotalPrice,
     formData,
     setFormData,
+    registerData,
+    setRegisterData,
+    loginData,
+    setLoginData,
+    userData,
+    setUserData,
   };
   return (
     <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>

@@ -7,16 +7,21 @@ import axios from "axios";
 import { SideContext } from "./SideContext";
 
 function Profile({ expanded, ready, setReady, setExpanded }) {
-  const [userData, setUserData] = useState(null);
-  const { formData, setFormData } = useContext(GlobalContext);
+  const { userData, setUserData } = useContext(GlobalContext);
 
-  // useEffect(() => {
-  //   const storedData = localStorage.getItem("formData");
-  //   if (storedData) {
-  //     const parsedData = JSON.parse(storedData);
-  //     setUserData(parsedData);
-  //   }
-  // }, []);
+  // const [userData, setUserData] = useState({
+  //   full_name:"",
+  //   email:""
+  // });
+  // const { formData, setFormData } = useContext(GlobalContext);
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("userData");
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      setUserData(parsedData);
+    }
+  }, []);
 
   // const { showProfile, setShowProfile } = useContext(SideContext);
 
@@ -28,28 +33,48 @@ function Profile({ expanded, ready, setReady, setExpanded }) {
   //   }, 2000);
   // };
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await axios.get(`/api/user?email=${formData.email}`) ;
-        console.log(response, formData.email);
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     try {
+  //       const response = await axios.get(`/api/user?email=${formData.email}`) ;
+  //       console.log(response, formData.email);
 
-        if (response.data.success) {
-          setFormData(response.data.users);
-          console.log(response, formData.email);
-        } else {
-          console.error("User not found");
-        }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
+  //       if (response.data.success) {
+  //         setFormData(response.data.users);
+  //         console.log(response, formData.email);
+  //       } else {
+  //         console.error("User not found");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //     }
+  //   };
 
-    // Verifica se formData.email è disponibile prima di effettuare la richiesta
-    if (formData.email) {
-      fetchUserData();
-    }
-  }, [formData.email]); // Esegui l'effetto solo quando formData.email cambia
+  //   // Verifica se formData.email è disponibile prima di effettuare la richiesta
+  //   if (formData.email) {
+  //     fetchUserData();
+  //   }
+  // }, [formData.email]); // Esegui l'effetto solo quando formData.email cambia
+
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     try {
+  //       const response = await axios.get("/api/user?email=" + userData.email);
+  //       console.log(response);
+
+  //       if (response.data.success) {
+  //         console.log(response.data.user);
+  //         setUserData(response.data.user);
+  //       } else {
+  //         console.error("User not found");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //     }
+  //   };
+
+  //   fetchUserData();
+  // }, [userData.email]);
 
   const back = () => {
     setReady(!ready);
@@ -59,22 +84,19 @@ function Profile({ expanded, ready, setReady, setExpanded }) {
     }, 500);
   };
 
+  const logout = () => {
+    localStorage.removeItem("userData");
+    window.location.href = "/"; // Replace "/" with your landing page URL
+  };
 
   // const logout = () => {
-  //   localStorage.removeItem("formData");
-  //   window.location.href = "/"; // Replace "/" with your landing page URL
+  //   // Resetta i dati del profilo nel context
+  //   setUserData({
+  //     full_name: "",
+  //     email: "",
+  //   });
+  //   window.location.href = "/"; // Sostituisci "/" con l'URL della tua pagina iniziale
   // };
-
-  const logout = () => {
-    // Resetta i dati del profilo nel context
-    setFormData({
-      fullName: "",
-      email: "",
-      password: "",
-      rememberPassword: false,
-    });
-    window.location.href = "/"; // Sostituisci "/" con l'URL della tua pagina iniziale
-  };
 
   return (
     <>
@@ -90,18 +112,18 @@ function Profile({ expanded, ready, setReady, setExpanded }) {
               <button onClick={back}> Back</button>
             </div>
 
-            {formData && (
+            {userData && (
               <div className="userData">
                 <div className="userImage"></div>
                 <div className="profile-data">
                   <label>Full Name : </label>
+                  <span>{userData.fullName}</span>
                   <br />
-                  <span>{formData.full_name}</span>
                   <br />
 
                   <label>Email : </label>
 
-                  <span>{formData.email}</span>
+                  <span>{userData.email}</span>
                 </div>
               </div>
             )}

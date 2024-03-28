@@ -10,6 +10,7 @@ import { Explore } from "./Explore";
 import "./HomePage.css"
 import Destination from "./Destination";
 import { Tuta } from "./Tuta";
+import TestimonialBox from "./TestimonialBox";
 
 
 function Homepage() {
@@ -34,9 +35,11 @@ function Homepage() {
       {/* <ActiveSlider id="section1"></ActiveSlider> */}
       <Destination id="section1"></Destination>
       <Explore id="section2"></Explore>
-      <Tuta></Tuta>
       <SolarSystem id="section3"></SolarSystem>
       <News id="section4"></News>
+      <Tuta></Tuta>
+
+      <TestimonialBox></TestimonialBox>
       <Footer></Footer>
       </div>
 

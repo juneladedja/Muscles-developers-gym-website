@@ -16,7 +16,7 @@ function Book() {
       setSavedBookings(savedBookingsFromLocalStorage);
     }
     console.log(savedBookings);
-  }, []);
+  }, [bookings]);
 
   function deleteItem(index) {
     const updatedBookings = [...savedBookings];
@@ -62,13 +62,13 @@ function Book() {
                     <strong>children : {booking.child}</strong>
                     <strong>destination : {booking.selectedOption}</strong>
                     <strong>selected date : {booking.selectedDate}</strong>
-                    <strong>price: : {booking.totalPrice}</strong>
+                    <strong>price: : {booking.totalPrice} $</strong>
                     <button onClick={() => deleteItem(index)}>delete</button>
                   </li>
                 ))}
               </ul>
               <div className="total-resume">
-                <p>Total : {calculateTotal()} </p>
+                <p>Total : {calculateTotal()} $</p>
               </div>
             </>
           )}

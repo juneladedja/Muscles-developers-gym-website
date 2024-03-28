@@ -9,7 +9,7 @@ import Instagram from "./assets/icons8-instagram-100.png";
 import Nasaimg from "./assets/Nasa.png";
 import Spaceximg from "./assets/Spacex.png";
 import Googleimg from "./assets/google.png";
-import Moon from "./assets/moon.png";
+import Moon from "./assets/Moon.png";
 import { useRef } from "react";
 export function Footer() {
 

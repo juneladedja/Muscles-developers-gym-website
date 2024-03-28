@@ -9,7 +9,7 @@ export function Tuta() {
 
         <div className="main">
           <img className="product__image" src={astro} alt="astro-tuta" />
-          <div className="tuta-container">
+          {/* <div className="tuta-container"> */}
             <div className="title">
               THE INNOVATION
               <span> OF OUR NEW SUIT </span>
@@ -26,7 +26,7 @@ export function Tuta() {
                 <p className="lighter">50% LIGHTER WATERPROOF </p>
                 <p className="recycled">RECYCLED MATERIALS</p>
               </div>
-            </div>
+            {/* </div> */}
           </div>
         </div>
       </div>

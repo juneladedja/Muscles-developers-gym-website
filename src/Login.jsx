@@ -1,4 +1,4 @@
-import { useContext , useState } from "react";
+import { useContext, useState } from "react";
 import login from "./login.module.css";
 import astronaut from "./assets/loginImg.png";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +6,80 @@ import axios from "axios";
 import { GlobalContext } from "./GlobalContext";
 
 function Login() {
-  const {formData, setFormData} = useContext(GlobalContext)
+  const {
+    registerData,
+    setRegisterData,
+    loginData,
+    setLoginData,
+    userData,
+    setUserData,
+    formData,
+    setFormData,
+  } = useContext(GlobalContext);
+
+  // -------------------------------------------------------------------
+
+  const handleRegisterInputChange = (event) => {
+    const { name, value, type, checked } = event.target;
+    const newValue = type === "checkbox" ? checked : value;
+
+    setRegisterData({
+      ...registerData,
+      [name]: newValue,
+    });
+
+    setUserData(()=>registerData)
+  };
+
+  const handleLoginInputChange = (event) => {
+    const { name, value, type, checked } = event.target;
+    const newValue = type === "checkbox" ? checked : value;
+
+    setLoginData({
+      ...loginData,
+      [name]: newValue,
+    });
+
+    setUserData(()=>loginData)
+
+  };
+
+  const handleSubmitRegister = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5000/api/register", {
+        fullName: registerData.fullName,
+        email: registerData.email,
+        password: registerData.password,
+      });
+      localStorage.setItem("userData", JSON.stringify(userData));
+
+      console.log(response.data);
+      navigate("/homepage");
+      // Effettua altre azioni dopo la registrazione, ad esempio reindirizza l'utente alla homepage
+    } catch (error) {
+      console.error("Server error");
+    }
+  };
+
+  const handleSubmitLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5000/api/login", {
+        email: loginData.email,
+        password: loginData.password,
+      });
+          localStorage.setItem("userData", JSON.stringify(userData));
+
+
+      console.log(response.data);
+      navigate("/homepage");
+      // Effettua altre azioni dopo il login, ad esempio reindirizza l'utente alla homepage
+    } catch (error) {
+      console.error("Server error");
+    }
+  };
+  // -------------------------------------------------------------------
 
   const [isVisible, setIsVisible] = useState(true);
 
@@ -26,15 +99,15 @@ function Login() {
   //   rememberPassword: false,
   // });
 
-  const handleInputChange = (event) => {
-    const { name, value, type, checked } = event.target;
-    const newValue = type === "checkbox" ? checked : value;
+  // const handleInputChange = (event) => {
+  //   const { name, value, type, checked } = event.target;
+  //   const newValue = type === "checkbox" ? checked : value;
 
-    setFormData({
-      ...formData,
-      [name]: newValue,
-    });
-  };
+  //   setFormData({
+  //     ...formData,
+  //     [name]: newValue,
+  //   });
+  // };
 
   const navigate = useNavigate();
 
@@ -45,44 +118,59 @@ function Login() {
   //   navigate("/homepage");
   // };
 
-  const handleSubmitRegister = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:5000/api/register", {
-        fullName: formData.fullName,
-        email: formData.email,
-        password: formData.password
-      });
-      console.log(response.data);
-      navigate("/homepage")
-    } catch (error) {
-      console.error("Server error");
-    }
-  }
+  // const handleSubmitRegister = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post("http://localhost:5000/api/register", {
+  //       fullName: formData.fullName,
+  //       email: formData.email,
+  //       password: formData.password
+  //     });
+  //     console.log(response.data);
+  //     navigate("/homepage")
+  //   } catch (error) {
+  //     console.error("Server error");
+  //   }
+  // }
 
-  const handleSubmitLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:5000/api/login", {
-        email: formData.email,
-        password: formData.password
-      })
-      console.log(response.data);
-      navigate("/homepage")
-    } catch (error) {
-      console.error("server error");
-    }
-  }
+  // const handleSubmitLogin = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post("http://localhost:5000/api/login", {
+  //       email: formData.email,
+  //       password: formData.password
+  //     })
+  //     console.log(response.data);
+  //     navigate("/homepage")
+  //   } catch (error) {
+  //     console.error("server error");
+  //   }
+  // }
+
+  // const isRegisterComplete = () => {
+  //   if (log) {
+  //     return formData.email && formData.password;
+  //   } else {
+  //     return (
+  //       formData.fullName &&
+  //       formData.email &&
+  //       formData.password &&
+  //       formData.confirmPassword
+  //     );
+  //   }
+  // };
 
   const isRegisterComplete = () => {
     if (log) {
-      return formData.email && formData.password;
+      // Se si sta eseguendo il login, controlla che email e password siano presenti
+      return loginData.email && loginData.password;
     } else {
+      // Se si sta eseguendo la registrazione, controlla che tutti i campi richiesti siano presenti
       return (
-        formData.fullName &&
-        formData.email &&
-        formData.password &&
-        formData.confirmPassword
+        registerData.fullName &&
+        registerData.email &&
+        registerData.password &&
+        registerData.confirmPassword
       );
     }
   };
@@ -101,27 +189,27 @@ function Login() {
 
             <input
               className={login.input}
-              onChange={handleInputChange}
-              value={formData.email}
-              name="email"
-              placeholder="Email"
               type="email"
+              name="email"
+              value={loginData.email}
+              onChange={handleLoginInputChange}
+              placeholder="Email"
             />
             <br />
             <input
               className={login.input}
-              onChange={handleInputChange}
-              value={formData.password}
-              name="password"
-              placeholder="Password"
               type="password"
+              name="password"
+              value={loginData.password}
+              onChange={handleLoginInputChange}
+              placeholder="Password"
             />
             <br />
 
             <label className={login.remember}>
               <input
-                onChange={handleInputChange}
-                checked={formData.rememberPassword}
+                // onChange={handleInputChange}
+                // checked={formData.rememberPassword}
                 name="rememberPassword"
                 type="checkbox"
               />
@@ -129,7 +217,9 @@ function Login() {
             </label>
             <br />
 
-            <button disabled={!isRegisterComplete()} className={login.input}>Login</button>
+            <button disabled={!isRegisterComplete()} className={login.input}>
+              Login
+            </button>
             <br />
             <span>
               or{" "}
@@ -153,46 +243,46 @@ function Login() {
 
             <input
               className={login.input}
-              onChange={handleInputChange}
-              value={formData.fullName}
-              name="fullName"
-              placeholder="Full Name"
               type="text"
+              name="fullName"
+              value={registerData.fullName}
+              onChange={handleRegisterInputChange}
+              placeholder="Full Name"
             />
             <br />
             <input
               className={login.input}
-              onChange={handleInputChange}
-              value={formData.email}
-              name="email"
-              placeholder="Email"
               type="email"
+              name="email"
+              value={registerData.email}
+              onChange={handleRegisterInputChange}
+              placeholder="Email"
             />
             <br />
 
             <input
               className={login.input}
-              onChange={handleInputChange}
-              value={formData.password}
+              type="password"
               name="password"
+              value={registerData.password}
+              onChange={handleRegisterInputChange}
               placeholder="Password"
-              type="password"
             />
             <br />
 
             <input
               className={login.input}
-              onChange={handleInputChange}
-              value={formData.confirmPassword}
-              name="confirmPassword"
-              placeholder="Repeat Password"
               type="password"
+              name="confirmPassword"
+              value={registerData.confirmPassword}
+              onChange={handleRegisterInputChange}
+              placeholder="Confirm Password"
             />
             <br />
             <label className={login.remember}>
               <input
-                onChange={handleInputChange}
-                checked={formData.rememberPassword}
+                // onChange={handleInputChange}
+                // checked={formData.rememberPassword}
                 name="rememberPassword"
                 type="checkbox"
               />
@@ -200,7 +290,9 @@ function Login() {
             </label>
             <br />
 
-            <button disabled={!isRegisterComplete()} className={login.input}>Register</button>
+            <button disabled={!isRegisterComplete()} className={login.input}>
+              Register
+            </button>
             <br />
 
             <span>

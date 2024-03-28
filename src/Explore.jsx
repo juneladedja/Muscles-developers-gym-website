@@ -1,9 +1,9 @@
 import "./explore.css";
 import canyon from "./assets/canyon.jpeg";
-import mars from "./assets/mars.png";
+import mars from "./assets/Mars.png";
 import astromare from "./assets/astromare.jpg";
-import nettuno from "./assets/neptune.png";
-import venere from "./assets/venus.png";
+import nettuno from "./assets/Neptune.png";
+import venere from "./assets/Venus.png";
 import quadsadv from "./assets/quadsadv.png";
 
 export function Explore({ id }) {

@@ -58,7 +58,7 @@
 .intro {
   padding: 6px;
   /* margin-bottom: 60px; */
-  bottom: 100px;
+  top: 90px;
   position: absolute;
   background: rgb(27, 27, 27, 0);
   color: rgb(255, 255, 255);
@@ -97,7 +97,7 @@
 .news-card:hover .intro {
   margin-left: -1px;
   height: fit-content;
-  bottom: 30%;
+  top: 60px ;
   background: black;
   opacity: 0.6;
 }
@@ -113,7 +113,7 @@
 }
 
 .swiper-pagination{
-  margin-bottom: 20px !important;
+  margin-bottom: 40px !important;
 }
 /* 
 

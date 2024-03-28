@@ -81,12 +81,16 @@ function Drop() {
   };
 
   const handleConfirm = () => {
+    const day = selectedDate.getDate();
+    const month = selectedDate.getMonth() + 1; // I mesi iniziano da zero, quindi aggiungiamo 1
+    const year = selectedDate.getFullYear();
+    const formattedDate = `${day}/${month}/${year}`;
     const newBooking1 = {
       adults: adults,
       child: child,
       baggages: baggages,
       selectedOption: selectedOption,
-      selectedDate: String(selectedDate),
+      selectedDate: formattedDate,
       totalPrice: totalPrice,
     };
 
@@ -225,17 +229,17 @@ function Drop() {
 
         <p className="p-modal">
           Adults: {adults}
-          <span> {adults * 70000}$</span>
+          <span> {adults * 70000} $</span>
         </p>
         <br />
 
         <p className="p-modal">
-          Children: {child} <span>{child * 50000}$</span>
+          Children: {child} <span>{child * 50000} $</span>
         </p>
         <br />
 
         <p className="p-modal">
-          Baggages: {baggages} <span>{baggages * 1000}$</span>
+          Baggages: {baggages} <span>{baggages * 1000} $</span>
         </p>
         <br />
 

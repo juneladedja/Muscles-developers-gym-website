@@ -5,6 +5,7 @@
   justify-content: center;
   width: 90%;
   height: 80vh;
+  max-height: 700px;
   margin: 110px auto 0 auto;
 }
 .titolo-suit {
@@ -13,6 +14,7 @@
   display: flex;
   justify-content: center;
   padding-bottom: 20px;
+
 }
 
 .main {
@@ -21,8 +23,11 @@
   justify-content: center;
 
   height: 70vh;
+  max-height: 600px;
   margin: 0 auto;
   padding: 10px;
+
+
 }
 
 .main::before,
@@ -59,6 +64,7 @@
 
 .product__image {
   height: 100%;
+  position: relative;
 }
 
 .tuta-container {
@@ -67,12 +73,12 @@
 }
 
 .title {
+  position: relative;
   width: fit-content;
   font-size: 25px;
   color: #ffffff;
   margin-bottom: 50px;
   transition: all 1s;
-  z-index: 9;
 }
 .title > span {
   font-size: 18px;
@@ -94,19 +100,26 @@
 } */
 
 .table-tuta {
-  /* position: absolute; */
+  position: absolute;
   display: block;
   color: white;
-  border: 1px solid white;
+  border: 1px solid rgb(255, 255, 255);
   border-collapse: collapse;
   position: absolute;
   font-size: 13px;
   height: fit-content;
-  margin: 20px 20px 20px 0;
-  left: 30%;
+  margin: 20px 20px 0px 0;
+  left: -30%;
   min-width: 250px;
   opacity: 0;
 }
+
+.main:hover .table-tuta {
+  transition: all 0.8s ease-in-out; /* Aggiungi la transizione anche per la proprietà left */
+  opacity: 1;
+  left: 0%;
+}
+
 .lighter {
   display: flex;
   justify-content: center;
@@ -124,15 +137,14 @@
   justify-content: center;
 
 }
-.main:hover .table-tuta {
-  transition: all 0.8s ease-in-out; /* Aggiungi la transizione anche per la proprietà left */
 
-  opacity: 1;
-  left: 50%;
-}
+@media screen and (max-width: 800px) {
 
-/* @media screen and (max-width: 800px) {
-
+  /* .main {
+    width: 100%;
+    position: relative;
+  }
+ */
   .main:hover::before {
     width: 100%;
     height: 100%;
@@ -141,37 +153,80 @@
   .table-tuta {
     width: auto;
     border-collapse: collapse;
+    background-color: rgba(0, 0, 0, 0.503);
+  }
+
+  .main:hover .table-tuta {
+    transition: all 0.8s ease-in-out; /* Aggiungi la transizione anche per la proprietà left */
+    opacity: 1;
+    left: 0%;
+  }
+  
+
+  /* .tuta-container {
     position: relative;
-  }
+    width:100vw;
+
+  } */
+  
+
   .title{
-    display: none;
+    position: absolute;
+    top: 500px;
+    background-color: rgba(0, 0, 0, 0.503);
+    opacity: 0;
+    width: 98%;
 
   }
 
-} */
+  .main:hover .title {
+    top: 105px;
+    opacity: 1;
+  }
 
-@media screen and (max-width: 400px) {
+  .desc {
+    padding-top: 20px;
+    max-width: 400px;
+    font-size: 14px;
+    color: #ffffff;
+    position: relative;
+    transition: all 1s;
+  }
+  
+
+  .product__image {
+    /* min-width: 300px;
+    max-width: 350px; */
+    height: 100%;
+
+    /* height: auto; */
+  }
+
+
+}
+
+/* @media screen and (max-width: 400px) {
   .main {
-    position: static; /* Resetta la posizione */
+    position: static; 
     width: auto;
     height: auto;
-    /* padding: 1em; Riduci il padding per adattarsi meglio ai dispositivi mobili */
-    transform: none; /* Resetta la trasformazione */
+    /* padding: 1em; 
+    transform: none; 
   }
 
   .product__image {
     position: static;
     transform: none;
-    margin: 0 auto; /* Centra l'immagine orizzontalmente */
-    width: 80%; /* Riduci la larghezza dell'immagine per adattarsi meglio ai dispositivi mobili */
-    /* max-width: 300px; Imposta una larghezza massima */
-    display: block; /* Imposta l'immagine come blocco per centrarla correttamente */
-    margin-bottom: 20px; /* Spazio tra l'immagine e il titolo */
+    margin: 0 auto; 
+    width: 80%; 
+    /* max-width: 300px;
+    display: block;
+    margin-bottom: 20px;
   }
 
   .tuta-container {
-    width: 100%; /* Larghezza massima */
-    text-align: center; /* Centra il testo */
+    width: 100%; 
+    text-align: center;
   }
 
   .title {
@@ -183,11 +238,11 @@
     width: 100%;
     font-size: 1px;
     line-height: 1.5;
-    margin-bottom: 5px; /* Spazio tra la descrizione e la tabella */
+    margin-bottom: 5px; 
   }
 
   .table-tuta {
     width: 100%;
-    margin: 0 auto; /* Centra la tabella */
+    margin: 0 auto; 
   }
-}
+} */

@@ -44,6 +44,7 @@ const PaymentDetailsForm = ({ onCompletePurchase }) => {
                 type="text"
                 name="name"
                 id="name"
+                title="Please enter your full name"
                 placeholder="Your name and surname"
                 value={formData.name}
                 onChange={handleChange}

@@ -3,6 +3,7 @@ import "./solar-system.css";
 import "./App.css";
 
 function SolarSystem({ id }) {
+  
   return (
     <>
       <div id={id} className="over-solar-system">

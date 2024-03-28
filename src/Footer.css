@@ -209,14 +209,21 @@
 .moon-container .parallax {
   width: 118vw;
   position: absolute;
-  padding-top: 100%;
+  padding-top: 110%;
 }
 
 @media (max-width: 600px) {
   .moon-container .parallax {
-    padding-top: 113%;
+    padding-top: 153%;
   }
 }
+
+@media (min-width: 600px) {
+  .moon-container .parallax {
+    padding-top: 100%;
+  }
+}
+
 
 .footer_links :nth-child(1) {
   display: block;

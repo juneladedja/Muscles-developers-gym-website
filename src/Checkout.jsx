@@ -74,7 +74,7 @@ function Checkout() {
           <div
             className={`step-check ${progressStep >= 1 ? "completed" : ""}`}
           ></div>
-          <span className="step-title">Payment</span>
+          <span className={`step-title ${progressStep === 1 ? "step-title active_check" : ""}`}>Payment</span>
         </div>
         <div
           className={`progress-step-container ${
@@ -84,7 +84,7 @@ function Checkout() {
           <div
             className={`step-check ${progressStep >= 2 ? "completed" : ""}`}
           ></div>
-          <span className="step-title">Information</span>
+          <span className={`step-title ${progressStep === 2 ? "step-title active_check" : ""}`}>Information</span>
         </div>
         <div
           className={`progress-step-container ${
@@ -94,7 +94,7 @@ function Checkout() {
           <div
             className={`step-check ${progressStep >= 3 ? "completed" : ""}`}
           ></div>
-          <span className="step-title">Review</span>
+          <span className={`step-title ${progressStep === 3 ? "step-title active_check" : ""}`}>Review</span>
         </div>
       </div>
 
