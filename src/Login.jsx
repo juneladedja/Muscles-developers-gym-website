@@ -52,7 +52,7 @@ function Login() {
         email: registerData.email,
         password: registerData.password,
       });
-      localStorage.setItem("userData", JSON.stringify(userData));
+      // localStorage.setItem("userData", JSON.stringify(userData));
 
       console.log(response.data);
       navigate("/homepage");
@@ -69,7 +69,7 @@ function Login() {
         email: loginData.email,
         password: loginData.password,
       });
-          localStorage.setItem("userData", JSON.stringify(userData));
+          // localStorage.setItem("userData", JSON.stringify(userData));
 
 
       console.log(response.data);

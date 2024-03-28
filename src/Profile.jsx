@@ -15,13 +15,13 @@ function Profile({ expanded, ready, setReady, setExpanded }) {
   // });
   // const { formData, setFormData } = useContext(GlobalContext);
 
-  useEffect(() => {
-    const storedData = localStorage.getItem("userData");
-    if (storedData) {
-      const parsedData = JSON.parse(storedData);
-      setUserData(parsedData);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const storedData = localStorage.getItem("userData");
+  //   if (storedData) {
+  //     const parsedData = JSON.parse(storedData);
+  //     setUserData(parsedData);
+  //   }
+  // }, []);
 
   // const { showProfile, setShowProfile } = useContext(SideContext);
 
@@ -33,28 +33,31 @@ function Profile({ expanded, ready, setReady, setExpanded }) {
   //   }, 2000);
   // };
 
-  // useEffect(() => {
-  //   const fetchUserData = async () => {
-  //     try {
-  //       const response = await axios.get(`/api/user?email=${formData.email}`) ;
-  //       console.log(response, formData.email);
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/user?email=${userData.email}`) ;
+        console.log(response);
+        if (response.data.success) {
+          console.log(response.data.users);
+          setUserData({
+            full_name:response.data.user.full_name,
+            email:response.data.user.email
+          })
+          console.log(userData);
+        } else {
+          console.error("User not found");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
 
-  //       if (response.data.success) {
-  //         setFormData(response.data.users);
-  //         console.log(response, formData.email);
-  //       } else {
-  //         console.error("User not found");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching user data:", error);
-  //     }
-  //   };
-
-  //   // Verifica se formData.email è disponibile prima di effettuare la richiesta
-  //   if (formData.email) {
-  //     fetchUserData();
-  //   }
-  // }, [formData.email]); // Esegui l'effetto solo quando formData.email cambia
+    // Verifica se formData.email è disponibile prima di effettuare la richiesta
+    if (userData.email) {
+      fetchUserData();
+    }
+  }, [userData.email]); // Esegui l'effetto solo quando formData.email cambia
 
   // useEffect(() => {
   //   const fetchUserData = async () => {
@@ -85,7 +88,7 @@ function Profile({ expanded, ready, setReady, setExpanded }) {
   };
 
   const logout = () => {
-    localStorage.removeItem("userData");
+    // localStorage.removeItem("userData");
     window.location.href = "/"; // Replace "/" with your landing page URL
   };
 
@@ -117,7 +120,7 @@ function Profile({ expanded, ready, setReady, setExpanded }) {
                 <div className="userImage"></div>
                 <div className="profile-data">
                   <label>Full Name : </label>
-                  <span>{userData.fullName}</span>
+                  <span>{userData.full_name}</span>
                   <br />
                   <br />
 
