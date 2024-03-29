@@ -39,26 +39,51 @@ app.post("/api/register", async (req, res) => {
   }
 });
 
+// app.post("/api/login", async (req, res) => {
+//   const { email, password } = req.body;
+
+//   try {
+//     const user = await db.oneOrNone(
+//       "SELECT * FROM users WHERE email = $1 AND password = $2",
+//       [email, password]
+//     );
+//     if (user) {
+//       res.json({ success: true, message: "Login successful" });
+//     } else {
+//       res
+//         .status(401)
+//         .json({ success: false, message: "Invalid email or password" });
+//     }
+//   } catch (error) {
+//     console.error("Error executing query", error);
+//     res.status(500).json({ success: false, message: "An error occurred" });
+//   }
+// });
+
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await db.oneOrNone(
-      "SELECT * FROM users WHERE email = $1 AND password = $2",
-      [email, password]
-    );
+    // Controlla se l'utente è presente nel database
+    const user = await db.oneOrNone("SELECT * FROM users WHERE email = $1", [email]);
     if (user) {
-      res.json({ success: true, message: "Login successful" });
+      // Se l'utente esiste, controlla la password
+      if (user.password === password) {
+        res.json({ success: true, message: "Login successful" });
+      } else {
+        // Se la password non corrisponde, restituisci un errore di accesso
+        res.status(401).json({ success: false, message: "Invalid email or password" });
+      }
     } else {
-      res
-        .status(401)
-        .json({ success: false, message: "Invalid email or password" });
+      // Se l'utente non esiste, restituisci un errore di accesso
+      res.status(401).json({ success: false, message: "Invalid email or password" });
     }
   } catch (error) {
     console.error("Error executing query", error);
     res.status(500).json({ success: false, message: "An error occurred" });
   }
 });
+
 
 app.get("/api/user", async (req, res) => {
   const { email } = req.query;
@@ -78,6 +103,9 @@ app.get("/api/user", async (req, res) => {
     res.status(500).json({ success: false, message: "An error occurred" });
   }
 });
+
+
+
 
 app.post("/api/deleteAllUsers", async (req, res) => {
   try {

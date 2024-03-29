@@ -15,6 +15,7 @@
 }
 
 .input {
+  position: relative;
   background-color: #30324580;
   border-radius: 8px;
   border: 0;
@@ -29,10 +30,51 @@
 
 }
 
-/* .btn {
-  cursor: pointer;
+.eyeIcon {
+  position: relative;
+  width: 100%;
+}
 
-} */
+.eyeIcon::after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  right: 10px; 
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-image: url('/src/assets/eye-invisible.png');
+  background-size: cover;
+  cursor: pointer;
+}
+
+.eyeIcon.open::after {
+  background-image: url('/src/assets/eye-visible.png');
+}
+
+
+.eyeIconRegister {
+  position: relative;
+  width: 100%;
+}
+
+.eyeIconRegister::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  right: 10px; 
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background-image: url('/src/assets/eye-invisible.png');
+  background-size: cover;
+  cursor: pointer;
+}
+
+.eyeIconRegister.open::after {
+  background-image: url('/src/assets/eye-visible.png');
+}
+
 
 .login_container_form {
   position: relative;

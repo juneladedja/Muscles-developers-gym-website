@@ -16,6 +16,10 @@ function Login() {
     setFormData,
   } = useContext(GlobalContext);
 
+  const [showPassword, setShowPassword] = useState(false);
+  const [repeatPassword, setRepeatPassword] = useState(false);
+
+  // handlechange della registrazione
   const handleRegisterInputChange = (event) => {
     const { name, value, type, checked } = event.target;
     const newValue = type === "checkbox" ? checked : value;
@@ -25,8 +29,12 @@ function Login() {
       [name]: newValue,
     });
 
-    setUserData(()=>registerData)
+    setUserData(registerData);
   };
+
+  // ///////////////////////////////////////////////
+
+  // handlechange dell'input
 
   const handleLoginInputChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -37,13 +45,35 @@ function Login() {
       [name]: newValue,
     });
 
-    setUserData(()=>loginData)
-
+    setUserData(loginData);
   };
+
+  // ///////////////////////////////////////////
+
+  // registrazione
 
   const handleSubmitRegister = async (e) => {
     e.preventDefault();
     try {
+      // Verifica se l'utente è già registrato
+      const existingUserResponse = await fetch(
+        "http://localhost:5000/api/user?email=" + registerData.email
+      );
+      const existingUserData = await existingUserResponse.json();
+
+      if (existingUserData.success) {
+        // Se l'utente è già registrato, mostra un alert e interrompi la registrazione
+        alert("Utente già registrato. Effettua il login.");
+        setRegisterData({
+          fullName: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
+        return;
+      }
+
+      // Se l'utente non è già registrato, procedi con la registrazione
       const response = await fetch("http://localhost:5000/api/register", {
         method: "POST",
         headers: {
@@ -63,6 +93,10 @@ function Login() {
     }
   };
 
+  // ///////////////////////////////////////////
+
+  // login
+
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
     try {
@@ -77,13 +111,22 @@ function Login() {
         }),
       });
       const data = await response.json();
-      console.log(data);
-      navigate("/homepage");
+      if (response.ok) {
+        console.log("Login successful");
+        navigate("/homepage");
+      } else {
+        console.error("Login failed:", data.message);
+        alert("Credenziali non valide. Si prega di riprovare.");
+        setLoginData({ email: "", password: "", rememberPassword: false });
+        // Mostra un messaggio di errore all'utente
+      }
     } catch (error) {
-      console.error("Server error");
+      console.error("Server error:", error.message);
+      // Gestisci gli errori di rete o del server
     }
   };
 
+  // /////////////////////////////////////////
 
   const [isVisible, setIsVisible] = useState(true);
 
@@ -93,10 +136,25 @@ function Login() {
     setIsVisible(!isVisible);
     setTimeout(() => {
       setLog(!log);
+      setLoginData({
+        email: "",
+        password: "",
+        rememberPassword: false,
+      });
+
+      setRegisterData({
+        fullName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        rememberPassword: false,
+      });
+
+      setShowPassword(false);
+      setRepeatPassword(false);
     }, 300);
   }
   const navigate = useNavigate();
-
 
   const isRegisterComplete = () => {
     if (log) {
@@ -132,15 +190,23 @@ function Login() {
               placeholder="Email"
             />
             <br />
+
+            {/* ///////////////////////////////////////// */}
             <input
               className={login.input}
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               value={loginData.password}
               onChange={handleLoginInputChange}
               placeholder="Password"
             />
+            <div
+              className={`${login.eyeIcon} ${showPassword ? login.open : ""}`}
+              onClick={() => setShowPassword(!showPassword)}
+            ></div>
             <br />
+
+            {/* ///////////////////////////////////////////// */}
 
             <label className={login.remember}>
               <input
@@ -198,12 +264,19 @@ function Login() {
 
             <input
               className={login.input}
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               value={registerData.password}
               onChange={handleRegisterInputChange}
               placeholder="Password"
             />
+            <div
+              className={`${login.eyeIconRegister} ${
+                showPassword ? login.open : ""
+              }`}
+              onClick={() => setShowPassword(!showPassword)}
+            ></div>
+
             <br />
 
             <input
@@ -213,7 +286,17 @@ function Login() {
               value={registerData.confirmPassword}
               onChange={handleRegisterInputChange}
               placeholder="Confirm Password"
+              required
+              pattern={registerData.password} // Utilizziamo la password inserita come pattern
+              title="Le password non corrispondono" // Messaggio di errore personalizzato
             />
+            <div
+              className={`${login.eyeIconRegister} ${
+                repeatPassword ? login.open : ""
+              }`}
+              onClick={() => setRepeatPassword(!repeatPassword)}
+            ></div>
+
             <br />
             <label className={login.remember}>
               <input
