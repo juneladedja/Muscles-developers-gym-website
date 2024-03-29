@@ -9,42 +9,20 @@ import { SideContext } from "./SideContext";
 function Profile({ expanded, ready, setReady, setExpanded }) {
   const { userData, setUserData } = useContext(GlobalContext);
 
-  // const [userData, setUserData] = useState({
-  //   full_name:"",
-  //   email:""
-  // });
-  // const { formData, setFormData } = useContext(GlobalContext);
-
-  // useEffect(() => {
-  //   const storedData = localStorage.getItem("userData");
-  //   if (storedData) {
-  //     const parsedData = JSON.parse(storedData);
-  //     setUserData(parsedData);
-  //   }
-  // }, []);
-
-  // const { showProfile, setShowProfile } = useContext(SideContext);
-
-  // const toggleProfile = () => {
-  //   setExpanded(!expanded);
-
-  //   setTimeout(() => {
-  //     setReady(!ready);
-  //   }, 2000);
-  // };
-
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/user?email=${userData.email}`) ;
-        console.log(response);
-        if (response.data.success) {
-          console.log(response.data.users);
+        const response = await fetch(`http://localhost:5000/api/user?email=${userData.email}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch user data');
+        }
+        const data = await response.json();
+        console.log(data);
+        if (data.success) {
           setUserData({
-            full_name:response.data.user.full_name,
-            email:response.data.user.email
-          })
-          console.log(userData);
+            full_name: data.user.full_name,
+            email: data.user.email
+          });
         } else {
           console.error("User not found");
         }
@@ -52,12 +30,37 @@ function Profile({ expanded, ready, setReady, setExpanded }) {
         console.error("Error fetching user data:", error);
       }
     };
-
-    // Verifica se formData.email è disponibile prima di effettuare la richiesta
+  
     if (userData.email) {
       fetchUserData();
     }
-  }, [userData.email]); // Esegui l'effetto solo quando formData.email cambia
+  }, [userData.email]);
+  
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     try {
+  //       const response = await axios.get(`http://localhost:5000/api/user?email=${userData.email}`) ;
+  //       console.log(response);
+  //       if (response.data.success) {
+  //         console.log(response.data.users);
+  //         setUserData({
+  //           full_name:response.data.user.full_name,
+  //           email:response.data.user.email
+  //         })
+  //         console.log(userData);
+  //       } else {
+  //         console.error("User not found");
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //     }
+  //   };
+
+  //   // Verifica se formData.email è disponibile prima di effettuare la richiesta
+  //   if (userData.email) {
+  //     fetchUserData();
+  //   }
+  // }, [userData.email]); // Esegui l'effetto solo quando formData.email cambia
 
   // useEffect(() => {
   //   const fetchUserData = async () => {

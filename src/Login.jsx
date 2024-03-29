@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import login from "./login.module.css";
 import astronaut from "./assets/loginImg.png";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { GlobalContext } from "./GlobalContext";
 
 function Login() {
@@ -16,8 +15,6 @@ function Login() {
     formData,
     setFormData,
   } = useContext(GlobalContext);
-
-  // -------------------------------------------------------------------
 
   const handleRegisterInputChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -47,16 +44,20 @@ function Login() {
   const handleSubmitRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/register", {
-        fullName: registerData.fullName,
-        email: registerData.email,
-        password: registerData.password,
+      const response = await fetch("http://localhost:5000/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: registerData.fullName,
+          email: registerData.email,
+          password: registerData.password,
+        }),
       });
-      // localStorage.setItem("userData", JSON.stringify(userData));
-
-      console.log(response.data);
+      const data = await response.json();
+      console.log(data);
       navigate("/homepage");
-      // Effettua altre azioni dopo la registrazione, ad esempio reindirizza l'utente alla homepage
     } catch (error) {
       console.error("Server error");
     }
@@ -65,21 +66,24 @@ function Login() {
   const handleSubmitLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/login", {
-        email: loginData.email,
-        password: loginData.password,
+      const response = await fetch("http://localhost:5000/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: loginData.email,
+          password: loginData.password,
+        }),
       });
-          // localStorage.setItem("userData", JSON.stringify(userData));
-
-
-      console.log(response.data);
+      const data = await response.json();
+      console.log(data);
       navigate("/homepage");
-      // Effettua altre azioni dopo il login, ad esempio reindirizza l'utente alla homepage
     } catch (error) {
       console.error("Server error");
     }
   };
-  // -------------------------------------------------------------------
+
 
   const [isVisible, setIsVisible] = useState(true);
 
@@ -91,81 +95,13 @@ function Login() {
       setLog(!log);
     }, 300);
   }
-
-  // const [formData, setFormData] = useState({
-  //   fullName: "",
-  //   email: "",
-  //   password: "",
-  //   rememberPassword: false,
-  // });
-
-  // const handleInputChange = (event) => {
-  //   const { name, value, type, checked } = event.target;
-  //   const newValue = type === "checkbox" ? checked : value;
-
-  //   setFormData({
-  //     ...formData,
-  //     [name]: newValue,
-  //   });
-  // };
-
   const navigate = useNavigate();
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   localStorage.setItem("formData", JSON.stringify(formData));
-  //   console.log(formData);
-  //   navigate("/homepage");
-  // };
-
-  // const handleSubmitRegister = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post("http://localhost:5000/api/register", {
-  //       fullName: formData.fullName,
-  //       email: formData.email,
-  //       password: formData.password
-  //     });
-  //     console.log(response.data);
-  //     navigate("/homepage")
-  //   } catch (error) {
-  //     console.error("Server error");
-  //   }
-  // }
-
-  // const handleSubmitLogin = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post("http://localhost:5000/api/login", {
-  //       email: formData.email,
-  //       password: formData.password
-  //     })
-  //     console.log(response.data);
-  //     navigate("/homepage")
-  //   } catch (error) {
-  //     console.error("server error");
-  //   }
-  // }
-
-  // const isRegisterComplete = () => {
-  //   if (log) {
-  //     return formData.email && formData.password;
-  //   } else {
-  //     return (
-  //       formData.fullName &&
-  //       formData.email &&
-  //       formData.password &&
-  //       formData.confirmPassword
-  //     );
-  //   }
-  // };
 
   const isRegisterComplete = () => {
     if (log) {
-      // Se si sta eseguendo il login, controlla che email e password siano presenti
       return loginData.email && loginData.password;
     } else {
-      // Se si sta eseguendo la registrazione, controlla che tutti i campi richiesti siano presenti
       return (
         registerData.fullName &&
         registerData.email &&
