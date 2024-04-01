@@ -8,8 +8,46 @@ import Spaceximg from "./assets/starship-flight3-hires.webp";
 import Stazione from "./assets/stazione.jpg";
 import Kepler from "./assets/Kepler22b.jpg";
 import Satellite from "./assets/satellite.jpg";
+import {GlobalContext} from "./GlobalContext";
 
+// ////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////
+import { useState, useEffect, useContext } from "react";
 function News({ id }) {
+
+  const { setIsVisible4, isVisible4 } = useContext(GlobalContext);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Ottieni l'elemento
+      const element = document.getElementById("section4");
+  
+      // Verifica se l'elemento esiste
+      if (element) {
+        // Calcola la posizione dell'elemento rispetto al top della finestra
+        const elementTop = element.getBoundingClientRect().top;
+  
+        // Calcola l'altezza dell'elemento
+        const elementHeight = element.offsetHeight;
+  
+        // Verifica se l'elemento è completamente visibile o solo parzialmente visibile
+        const isCompletelyVisible = elementTop >= 0 && elementTop + elementHeight <= window.innerHeight;
+        const isPartiallyVisible = elementTop < window.innerHeight && elementTop + elementHeight > 0;
+  
+        // Imposta isVisible a true se l'elemento è completamente visibile o solo parzialmente visibile, altrimenti a false
+        setIsVisible4(isCompletelyVisible || isPartiallyVisible);
+      }
+    };
+  
+    // Aggiungi l'event listener per lo scroll
+    window.addEventListener("scroll", handleScroll);
+  
+    // Rimuovi l'event listener quando il componente viene smontato
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+      
   const Cards = [
     {
       id: 0,
@@ -58,7 +96,12 @@ function News({ id }) {
             <SwiperSlide key={slide.img}>
               <div className="news-container">
                 <div className="news-card">
-                  <img className="news-img" src={slide.img} id={slide.id} alt=""></img>
+                  <img
+                    className="news-img"
+                    src={slide.img}
+                    id={slide.id}
+                    alt=""
+                  ></img>
                   <div className="intro">
                     <p className="news-title">{slide.title}</p>
                     <p className="news-p">{slide.text}</p>

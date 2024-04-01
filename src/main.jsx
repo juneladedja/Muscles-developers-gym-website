@@ -7,11 +7,11 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
       <GlobalProvider>
         <App />
       </GlobalProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  /* </React.StrictMode> */
 );

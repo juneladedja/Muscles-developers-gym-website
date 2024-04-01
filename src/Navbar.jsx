@@ -4,9 +4,9 @@ import SideContextProvider from "./SideContext";
 import { GlobalContext } from "./GlobalContext";
 import { useContext } from "react";
 
-
 export function Navbar() {
-  const { scrollBlocked } = useContext(GlobalContext);
+  const { scrollBlocked, isVisible1, isVisible2, isVisible3, isVisible4 } =
+    useContext(GlobalContext);
 
   const handleLinkClick = (event, id) => {
     event.preventDefault();
@@ -27,7 +27,9 @@ export function Navbar() {
           <li className="li-container">
             <a
               href="#section1"
-              className="li-container underline"
+              className={`li-container underline ${
+                isVisible1 ? "visible" : ""
+              }`}
               onClick={(e) => handleLinkClick(e, "section1")}
             >
               Book your trip
@@ -36,7 +38,9 @@ export function Navbar() {
           <li className="li-container">
             <a
               href="#section2"
-              className="li-container underline"
+              className={`li-container underline ${
+                isVisible2 ? "visible" : ""
+              }`}
               onClick={(e) => handleLinkClick(e, "section2")}
             >
               Explore
@@ -45,7 +49,9 @@ export function Navbar() {
           <li className="li-container">
             <a
               href="#section3"
-              className="li-container underline"
+              className={`li-container underline ${
+                isVisible3 ? "visible" : ""
+              }`}
               onClick={(e) => handleLinkClick(e, "section3")}
             >
               Solar System
@@ -54,7 +60,9 @@ export function Navbar() {
           <li className="li-container">
             <a
               href="#section4"
-              className="li-container underline"
+              className={`li-container underline ${
+                isVisible4 ? "visible" : ""
+              }`}
               onClick={(e) => handleLinkClick(e, "section4")}
             >
               News

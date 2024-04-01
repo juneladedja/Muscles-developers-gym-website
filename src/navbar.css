@@ -111,4 +111,11 @@
     transform: translateX(0);
     opacity: 1;
   }
+  .visible.underline::after {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
+
+
+

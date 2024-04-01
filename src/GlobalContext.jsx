@@ -85,6 +85,18 @@ function GlobalProvider({ children }) {
     email: "",
   });
 
+  // book your trip
+  const [isVisible1, setIsVisible1] = useState(false);
+  // explore
+  const [isVisible2, setIsVisible2] = useState(false);
+  // solar System
+  const [isVisible3, setIsVisible3] = useState(false);
+  // news
+  const [isVisible4, setIsVisible4] = useState(false);
+
+  // tuta
+  const [isVisible5, setIsVisible5] = useState(false);
+
   const value = {
     scroll,
     setScroll,
@@ -117,6 +129,16 @@ function GlobalProvider({ children }) {
     setLoginData,
     userData,
     setUserData,
+    isVisible1,
+    setIsVisible1,
+    isVisible2,
+    setIsVisible2,
+    isVisible3,
+    setIsVisible3,
+    isVisible4,
+    setIsVisible4,
+    isVisible5,
+    setIsVisible5,
   };
   return (
     <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>

@@ -17,7 +17,6 @@ function Login() {
   } = useContext(GlobalContext);
 
   const [showPassword, setShowPassword] = useState(false);
-  const [repeatPassword, setRepeatPassword] = useState(false);
 
   // handlechange della registrazione
   const handleRegisterInputChange = (event) => {
@@ -151,7 +150,6 @@ function Login() {
       });
 
       setShowPassword(false);
-      setRepeatPassword(false);
     }, 300);
   }
   const navigate = useNavigate();
@@ -292,9 +290,9 @@ function Login() {
             />
             <div
               className={`${login.eyeIconRegister} ${
-                repeatPassword ? login.open : ""
+                showPassword ? login.open : ""
               }`}
-              onClick={() => setRepeatPassword(!repeatPassword)}
+              onClick={() => setShowPassword(!showPassword)}
             ></div>
 
             <br />
