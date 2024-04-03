@@ -19,14 +19,12 @@
   }
 }
 
-
 .top-footer {
   width: 100%;
   display: block;
   padding-top: 120px;
   margin-bottom: 15vh;
   max-width: 1920px;
-
 }
 
 @media (max-width: 500px) {
@@ -203,7 +201,14 @@
   position: relative;
   z-index: 1;
   max-width: 1920px;
+  margin-top: -40%;
 
+}
+
+@media (max-width: 1400px) {
+  .moon-container {
+    margin-top: 10%;
+  }
 }
 
 .moon-container .parallax {
@@ -223,7 +228,6 @@
     padding-top: 100%;
   }
 }
-
 
 .footer_links :nth-child(1) {
   display: block;
@@ -259,7 +263,6 @@
   display: none;
 }
 
-
 @media (max-width: 600px) {
   .nebulaLogo {
     display: none;
@@ -273,7 +276,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    margin: auto;    
+    margin: auto;
     z-index: 33;
   }
 }

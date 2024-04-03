@@ -9,6 +9,7 @@
     border: 1px solid gray;
     margin-top: 250px;
     margin-bottom: -10%;
+    height: 370px;
   }
   
   .fa-quote {
@@ -17,6 +18,8 @@
     position: absolute;
     top: 70px;
   }
+
+
   
   .fa-quote-right {
     left: 40px;
@@ -30,6 +33,11 @@
     line-height: 28px;
     text-align: justify;
   }
+  @media (max-width: 800px) {
+    .testimonial {
+      font-size: 2.3vw;
+    }}
+
   
   .user {
     display: flex;

@@ -10,9 +10,7 @@ function GlobalProvider({ children }) {
   const [baggages, setBaggages] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
-
   const [showOptions, setShowOptions] = useState(false);
-
   const [bookings, setBookings] = useState([]);
   const [scrollBlocked, setScrollBlocked] = useState(false);
 

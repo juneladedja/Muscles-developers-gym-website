@@ -14,7 +14,6 @@
   display: flex;
   justify-content: center;
   padding-bottom: 20px;
-
 }
 
 .main {
@@ -26,8 +25,6 @@
   max-height: 600px;
   margin: 0 auto;
   padding: 10px;
-
-
 }
 
 .main::before,
@@ -52,15 +49,15 @@
   right: 0;
 }
 
-.main:hover::before {
-  border-top-color: #787878;
-  border-right-color: #787878;
-  transition: width 0.3s ease-out, height 0.25s ease-out 0.25s;
-}
-.main:hover::before {
-  width: 100%;
-  height: 100%;
-}
+  .main.main-visible::before {
+    border-top-color: #787878;
+    border-right-color: #787878;
+    transition: width 0.3s ease-out, height 0.25s ease-out 0.25s;
+  }
+  .main.main-visible::before {
+    width: 100%;
+    height: 100%;
+  }
 
 .product__image {
   height: 100%;
@@ -94,10 +91,6 @@
   position: relative;
   transition: all 1s;
 }
-/* .main:hover .container .title,
-.main:hover .container .table-tuta {
-  left: 40%;
-} */
 
 .table-tuta {
   position: absolute;
@@ -114,11 +107,27 @@
   opacity: 0;
 }
 
-.main:hover .table-tuta {
-  transition: all 0.8s ease-in-out; /* Aggiungi la transizione anche per la proprietà left */
-  opacity: 1;
-  left: 0%;
+@media (min-width: 800px) {
+  .table-tuta.tuta-visible {
+    transition: all 0.8s ease-in-out; /* Aggiungi la transizione anche per la proprietà left */
+    opacity: 1;
+    left: 0%;
+  
+  }
 }
+
+@media (max-width: 800px) {
+  .table-tuta.tuta-visible {
+    transition: all 0.8s ease-in-out; /* Aggiungi la transizione anche per la proprietà left */
+    opacity: 1;
+    left: 0%;
+  
+  }
+}
+
+
+
+
 
 .lighter {
   display: flex;
@@ -135,54 +144,29 @@
   height: 100%;
   display: flex;
   justify-content: center;
-
 }
 
+
+
+
 @media screen and (max-width: 800px) {
-
-  /* .main {
-    width: 100%;
-    position: relative;
-  }
- */
-  .main:hover::before {
-    width: 100%;
-    height: 100%;
-  }
-
-  .table-tuta {
-    width: auto;
-    border-collapse: collapse;
-    background-color: rgba(0, 0, 0, 0.503);
-  }
-
-  .main:hover .table-tuta {
-    transition: all 0.8s ease-in-out; /* Aggiungi la transizione anche per la proprietà left */
-    opacity: 1;
-    left: 0%;
-  }
-  
-
-  /* .tuta-container {
-    position: relative;
-    width:100vw;
-
-  } */
-  
-
-  .title{
+  .title {
     position: absolute;
     top: 500px;
     background-color: rgba(0, 0, 0, 0.503);
     opacity: 0;
     width: 98%;
-
   }
 
-  .main:hover .title {
-    top: 105px;
+  .main .title {
+    top: 15px;
+    opacity: 0;
+  }
+
+  .title.title-visible {
     opacity: 1;
   }
+  
 
   .desc {
     padding-top: 20px;
@@ -192,57 +176,9 @@
     position: relative;
     transition: all 1s;
   }
-  
 
   .product__image {
-    /* min-width: 300px;
-    max-width: 350px; */
     height: 100%;
-
-    /* height: auto; */
   }
-
-
 }
 
-/* @media screen and (max-width: 400px) {
-  .main {
-    position: static; 
-    width: auto;
-    height: auto;
-    /* padding: 1em; 
-    transform: none; 
-  }
-
-  .product__image {
-    position: static;
-    transform: none;
-    margin: 0 auto; 
-    width: 80%; 
-    /* max-width: 300px;
-    display: block;
-    margin-bottom: 20px;
-  }
-
-  .tuta-container {
-    width: 100%; 
-    text-align: center;
-  }
-
-  .title {
-    font-size: 10px;
-    margin-bottom: 40px;
-  }
-
-  .desc {
-    width: 100%;
-    font-size: 1px;
-    line-height: 1.5;
-    margin-bottom: 5px; 
-  }
-
-  .table-tuta {
-    width: 100%;
-    margin: 0 auto; 
-  }
-} */

@@ -7,7 +7,7 @@ import venere from "./assets/Venus.png";
 import quadsadv from "./assets/quadsadv.png";
 import {GlobalContext} from "./GlobalContext";
 import { useState, useEffect, useContext } from "react";
-
+import info from "./assets/icons8-info-100.png"
 
 
 export function Explore({ id }) {
@@ -26,12 +26,17 @@ export function Explore({ id }) {
         // Calcola l'altezza dell'elemento
         const elementHeight = element.offsetHeight;
   
-        // Verifica se l'elemento è completamente visibile o solo parzialmente visibile
-        const isCompletelyVisible = elementTop >= 0 && elementTop + elementHeight <= window.innerHeight;
-        const isPartiallyVisible = elementTop < window.innerHeight && elementTop + elementHeight > 0;
+        // Calcola l'altezza del 60% dell'elemento
+        const fiftyPercentElementHeight = elementHeight * 0.5;
   
-        // Imposta isVisible a true se l'elemento è completamente visibile o solo parzialmente visibile, altrimenti a false
-        setIsVisible2(isCompletelyVisible || isPartiallyVisible);
+        // Calcola l'altezza del 60% della viewport
+        const fiftyPercentViewportHeight = window.innerHeight * 0.5;
+  
+        // Verifica se almeno il 60% dell'altezza dell'elemento è visibile nella viewport
+        const isFiftyPercentVisible = elementTop < fiftyPercentViewportHeight && elementTop + fiftyPercentElementHeight > 0;
+  
+        // Imposta isVisible a true solo se almeno il 60% dell'altezza dell'elemento è visibile
+        setIsVisible2(isFiftyPercentVisible);
       }
     };
   
@@ -53,6 +58,10 @@ export function Explore({ id }) {
             <div className="adventures-card canyon">
               <img className="planetpng" src={mars} alt="mars" />
               <h4 id="underline-text">CANYON TENT ADVENTURES </h4>
+              <div className="desc-adventures-card">
+                <p>In the vast Martian canyons, where rust-colored cliffs rise against a dusty pink sky, every step feels like a journey through time and space. Amidst the otherworldly landscape, we ventured, tracing ancient riverbeds, discovering hidden caves, and marveling at the alien beauty of Mars.</p>
+              <img className="info-icon" src={info} alt="info canyon" />
+              </div>
             </div>
 
             <div className="adventures-card astromare">
@@ -61,6 +70,11 @@ export function Explore({ id }) {
               <h4 id="underline-text">
                 OCEAN AERIAL TOUR
               </h4>
+              <div className="desc-adventures-card">
+                <p>Embarking on an ocean aerial tour of Neptune is a voyage beyond imagination. Hovering above the azure expanse, we witness the grandeur of colossal storms swirling in the atmosphere. As we glide over icy waves, Neptune reveals its mystique.</p>
+              <img className="info-icon" src={info} alt="info canyon" />
+              </div>
+
             </div>
 
             <div className="adventures-card venere">
@@ -68,6 +82,11 @@ export function Explore({ id }) {
               <h4 id="underline-text">
                  THE ALIENS DUNE TOUR
               </h4>
+              <div className="desc-adventures-card">
+                <p>Traversing the desert dunes of Venus unveils a surreal landscape, where golden sands stretch endlessly beneath the scorching sun. Amidst swirling dust devils, we navigate towering dunes sculpted by relentless winds.</p>
+              <img className="info-icon" src={info} alt="info canyon" />
+              </div>
+
             </div>
           </div>
         </div>

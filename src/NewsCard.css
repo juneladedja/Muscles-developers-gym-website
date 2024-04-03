@@ -89,6 +89,10 @@
 
 }
 
+.news-card img {
+  width: auto;
+}
+
 
 .news-card:hover {
   cursor: pointer;
@@ -111,6 +115,31 @@
   transform: scale(1.1) rotate(-3deg);
   transition: 10s;
 }
+
+@media only screen and (max-width: 800px) and (pointer: coarse) {
+  .news-card:active {
+    cursor: none;
+  }
+
+  .news-card:active .intro {
+    margin-left: -1px;
+    height: fit-content;
+    top: 60px;
+    background: black;
+    opacity: 0.6;
+  }
+
+  .news-card:active .news-p {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .news-card:active img {
+    transform: scale(1.1) rotate(-3deg);
+    transition: 10s;
+  }
+}
+
 
 .swiper-pagination{
   margin-bottom: 40px !important;

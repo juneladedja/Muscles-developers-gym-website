@@ -19,12 +19,17 @@ function Destination({ id }) {
         // Calcola l'altezza dell'elemento
         const elementHeight = element.offsetHeight;
   
-        // Verifica se l'elemento è completamente visibile o solo parzialmente visibile
-        const isCompletelyVisible = elementTop >= 0 && elementTop + elementHeight <= window.innerHeight;
-        const isPartiallyVisible = elementTop < window.innerHeight && elementTop + elementHeight > 0;
+        // Calcola l'altezza del 60% dell'elemento
+        const fiftyPercentElementHeight = elementHeight * 0.5;
   
-        // Imposta isVisible a true se l'elemento è completamente visibile o solo parzialmente visibile, altrimenti a false
-        setIsVisible1(isCompletelyVisible || isPartiallyVisible);
+        // Calcola l'altezza del 60% della viewport
+        const fiftyPercentViewportHeight = window.innerHeight * 0.5;
+  
+        // Verifica se almeno il 60% dell'altezza dell'elemento è visibile nella viewport
+        const isFiftyPercentVisible = elementTop < fiftyPercentViewportHeight && elementTop + fiftyPercentElementHeight > 0;
+  
+        // Imposta isVisible a true solo se almeno il 60% dell'altezza dell'elemento è visibile
+        setIsVisible1(isFiftyPercentVisible);
       }
     };
   
