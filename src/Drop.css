@@ -237,7 +237,8 @@
 
 .modal{
   background-color: transparent !important;
-  width: 400px;
+  width: 80vw;
+  max-width: 400px;
   height: fit-content;
   padding: 30px;
   text-shadow: 1px 1px 1px black;

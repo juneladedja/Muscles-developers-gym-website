@@ -2,86 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./Profile.css";
 import { useContext } from "react";
 import { GlobalContext } from "./GlobalContext"; // Importa il context in cui sono conservati i dati
-import axios from "axios";
-
-import { SideContext } from "./SideContext";
 
 function Profile({ expanded, ready, setReady, setExpanded }) {
   const { userData, setUserData } = useContext(GlobalContext);
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch(`http://localhost:5000/api/user?email=${userData.email}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch user data');
-        }
-        const data = await response.json();
-        console.log(data);
-        if (data.success) {
-          setUserData({
-            full_name: data.user.full_name,
-            email: data.user.email
-          });
-        } else {
-          console.error("User not found");
-        }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-  
-    if (userData.email) {
-      fetchUserData();
-    }
-  }, [userData.email]);
-  
-  // useEffect(() => {
-  //   const fetchUserData = async () => {
-  //     try {
-  //       const response = await axios.get(`http://localhost:5000/api/user?email=${userData.email}`) ;
-  //       console.log(response);
-  //       if (response.data.success) {
-  //         console.log(response.data.users);
-  //         setUserData({
-  //           full_name:response.data.user.full_name,
-  //           email:response.data.user.email
-  //         })
-  //         console.log(userData);
-  //       } else {
-  //         console.error("User not found");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching user data:", error);
-  //     }
-  //   };
-
-  //   // Verifica se formData.email è disponibile prima di effettuare la richiesta
-  //   if (userData.email) {
-  //     fetchUserData();
-  //   }
-  // }, [userData.email]); // Esegui l'effetto solo quando formData.email cambia
-
-  // useEffect(() => {
-  //   const fetchUserData = async () => {
-  //     try {
-  //       const response = await axios.get("/api/user?email=" + userData.email);
-  //       console.log(response);
-
-  //       if (response.data.success) {
-  //         console.log(response.data.user);
-  //         setUserData(response.data.user);
-  //       } else {
-  //         console.error("User not found");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching user data:", error);
-  //     }
-  //   };
-
-  //   fetchUserData();
-  // }, [userData.email]);
-
+    // Recupera i dati dell'utente dal localStorage al caricamento del componente
+    const storedUserData = localStorage.getItem("userData");
+    if (storedUserData) {
+      // Effettua il parsing della stringa JSON recuperata dal localStorage
+      const parsedUserData = JSON.parse(storedUserData);
+      setUserData(parsedUserData);     }
+  }, []); // Esegui solo al primo render del componente
   const back = () => {
     setReady(!ready);
 
@@ -91,19 +23,37 @@ function Profile({ expanded, ready, setReady, setExpanded }) {
   };
 
   const logout = () => {
-    // localStorage.removeItem("userData");
-    window.location.href = "/"; // Replace "/" with your landing page URL
+    const token = localStorage.getItem("token"); // Prendi il token dal localStorage
+    if (!token) {
+      console.error("Token non trovato nel localStorage");
+      return;
+    }
+  
+    // Effettua la richiesta di logout al server includendo il token
+    fetch("http://localhost:5000/api/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ token }),
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log("Logout successful");
+        localStorage.removeItem("token"); // Rimuovi il token dal localStorage dopo il logout
+        localStorage.removeItem("userData");
+        window.location.href = "/"; // Redirect alla pagina di login o homepage dopo il logout
+      } else {
+        console.error("Logout failed:", response.statusText);
+        // Gestisci il fallimento del logout, ad esempio mostrando un messaggio all'utente
+      }
+    })
+    .catch(error => {
+      console.error("Logout error:", error.message);
+      // Gestisci gli errori di rete o del server
+    });
   };
-
-  // const logout = () => {
-  //   // Resetta i dati del profilo nel context
-  //   setUserData({
-  //     full_name: "",
-  //     email: "",
-  //   });
-  //   window.location.href = "/"; // Sostituisci "/" con l'URL della tua pagina iniziale
-  // };
-
+    
   return (
     <>
       <div

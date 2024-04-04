@@ -3,7 +3,6 @@ export const GlobalContext = createContext();
 
 function GlobalProvider({ children }) {
   const [scroll, setScroll] = useState(false);
-
   const [selectedDate, setSelectedDate] = useState("");
   const [adults, setAdults] = useState(0);
   const [child, setChild] = useState(0);
@@ -13,6 +12,8 @@ function GlobalProvider({ children }) {
   const [showOptions, setShowOptions] = useState(false);
   const [bookings, setBookings] = useState([]);
   const [scrollBlocked, setScrollBlocked] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // useEffect(() => {
   //   // Carica le prenotazioni dal localStorage quando il componente viene montato
@@ -47,7 +48,6 @@ function GlobalProvider({ children }) {
   useEffect(() => {
     console.log(bookings);
     setTimeout(() => {
-      console.log("settimeout");
       console.log(bookings);
     }, 3000);
   }, [bookings]);
@@ -65,7 +65,7 @@ function GlobalProvider({ children }) {
   const [formData, setFormData] = useState({});
 
   const [registerData, setRegisterData] = useState({
-    fullName: "",
+    full_name: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -137,6 +137,8 @@ function GlobalProvider({ children }) {
     setIsVisible4,
     isVisible5,
     setIsVisible5,
+    isAuthenticated,
+    setIsAuthenticated,isLoading, setIsLoading
   };
   return (
     <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>

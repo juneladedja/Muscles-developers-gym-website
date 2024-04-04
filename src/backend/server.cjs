@@ -2,8 +2,11 @@ const express = require("express");
 const pgPromise = require("pg-promise");
 const cors = require("cors");
 const app = express();
+const jwt = require('jsonwebtoken');
+const secretKey = 'your_secret_key';
 const port = process.env.PORT || 5000;
-
+// //////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////
 const pgp = pgPromise();
 const db = pgp("postgres://postgres:postgres@localhost:5432/nebulaDB");
 
@@ -13,7 +16,8 @@ const setupDb = async () => {
             id SERIAL PRIMARY KEY,
             full_name VARCHAR(255) NOT NULL,
             email VARCHAR(255) UNIQUE NOT NULL,
-            password VARCHAR(255) NOT NULL
+            password VARCHAR(255) NOT NULL,
+            token TEXT
           )
         `);
 };
@@ -23,14 +27,19 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/api/register", async (req, res) => {
-  const { fullName, email, password } = req.body;
+  const { full_name, email, password } = req.body;
 
   try {
     await db.none(
       "INSERT INTO users (full_name, email, password) VALUES ($1, $2, $3)",
-      [fullName, email, password]
+      [full_name, email, password]
     );
-    res.json({ success: true, message: "Utente registrato con successo" });
+    const token = jwt.sign({}, secretKey, { expiresIn: '1h' });
+
+    await db.none("UPDATE users SET token = $1 WHERE email = $2", [token, email]);
+    console.log("Token aggiornato nel database:", token);
+    res.json({ success: true, message: "Utente registrato con successo", token, user: { full_name, email } });
+    console.log(token);
   } catch (error) {
     console.error("Errore durante la registrazione:", error);
     res
@@ -38,27 +47,6 @@ app.post("/api/register", async (req, res) => {
       .json({ success: false, message: "Errore durante la registrazione" });
   }
 });
-
-// app.post("/api/login", async (req, res) => {
-//   const { email, password } = req.body;
-
-//   try {
-//     const user = await db.oneOrNone(
-//       "SELECT * FROM users WHERE email = $1 AND password = $2",
-//       [email, password]
-//     );
-//     if (user) {
-//       res.json({ success: true, message: "Login successful" });
-//     } else {
-//       res
-//         .status(401)
-//         .json({ success: false, message: "Invalid email or password" });
-//     }
-//   } catch (error) {
-//     console.error("Error executing query", error);
-//     res.status(500).json({ success: false, message: "An error occurred" });
-//   }
-// });
 
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
@@ -69,7 +57,10 @@ app.post("/api/login", async (req, res) => {
     if (user) {
       // Se l'utente esiste, controlla la password
       if (user.password === password) {
-        res.json({ success: true, message: "Login successful" });
+
+        const token = jwt.sign({}, secretKey, { expiresIn: '1h' });
+        res.json({ success: true, message: "Login successful", token, user: { email, full_name: user.full_name } });
+        await db.none("UPDATE users SET token = $1 WHERE email = $2", [token, email]);
       } else {
         // Se la password non corrisponde, restituisci un errore di accesso
         res.status(401).json({ success: false, message: "Invalid email or password" });
@@ -103,6 +94,22 @@ app.get("/api/user", async (req, res) => {
     res.status(500).json({ success: false, message: "An error occurred" });
   }
 });
+
+app.post("/api/logout", async (req, res) => {
+  const { token } = req.body;
+
+  try {
+    // Effettua l'operazione di logout nel database
+    await db.none("UPDATE users SET token = NULL WHERE token = $1", [token]);
+
+    // Invia una risposta di successo
+    res.json({ success: true, message: "Logout successful" });
+  } catch (error) {
+    console.error("Logout error:", error);
+    res.status(500).json({ success: false, message: "An error occurred during logout" });
+  }
+});
+
 
 
 

@@ -29,6 +29,8 @@ const OrderSummary = ({ billingData }) => {
   const [purchased, setPurchased] = useState(false);
   const submitPurchase = () => {
     setPurchased(!purchased);
+    localStorage.setItem("bookings",JSON.stringify([]));
+
   };
 
   const NumeroOrdinale = () => {
@@ -78,7 +80,7 @@ const OrderSummary = ({ billingData }) => {
       )}
       {purchased && (
         <div className="purchased">
-          <div class="congratulations">
+          <div className="congratulations">
             <h2>Congratulations on your purchase!</h2>
             <br />
             <p>
