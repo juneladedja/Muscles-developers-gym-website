@@ -13,6 +13,7 @@ import Book from "./Book";
 import Checkout from "./Checkout";
 import { GlobalContext } from "./GlobalContext";
 import NotFoundPage from "./NotFoundPage";
+import './App.css'
 
 function App() {
   const { isAuthenticated, setIsAuthenticated, isLoading, setIsLoading } = useContext(GlobalContext);
