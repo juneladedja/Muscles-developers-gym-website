@@ -1,35 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import "./App.css";
+import Experience from "./Experience";
+import HeroContent from "./HeroContent";
+import { Navbar } from "./Navbar";
+import News from "./News";
+import SolarSystem from "./SolarSystem";
+import Star from "./Star";
+import Homepage from "./Homepage";
+import LandingPage from "./LandingPage";
+import { useContext, useEffect } from "react";
+import Book from "./Book";
+import Checkout from "./Checkout";
+import { GlobalContext } from "./GlobalContext";
+import NotFoundPage from "./NotFoundPage";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { isAuthenticated, setIsAuthenticated, isLoading, setIsLoading } = useContext(GlobalContext);
+  useEffect(() => {
+    // Controlla se c'è un token nel localStorage al caricamento della pagina
+    const token = localStorage.getItem("token");
+    if (token) {
+      // Se il token è presente, imposta lo stato isAuthenticated su true
+      setIsAuthenticated(true);
+    }
+    setIsLoading(false);
+
+  }, []);
+
+  if (isLoading) {
+    // Se l'applicazione è ancora in fase di caricamento, visualizza un messaggio di attesa
+    return <div>Loading...</div>;
+  }
+  console.log("isAuthenticated:", isAuthenticated);
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+      <Route path="*" element={<NotFoundPage />} />
+        <Route path="/" element={<LandingPage></LandingPage>}></Route>
+        <Route
+          path="/homepage"
+          element={isAuthenticated ? <Homepage /> : <Navigate to="/" replace />}
+        />
+        <Route
+          path="/book"
+          element={isAuthenticated ? <Book /> : <Navigate to="/" replace />}
+        />
+        <Route
+          path="/checkout"
+          element={isAuthenticated ? <Checkout /> : <Navigate to="/" replace />}
+        />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
