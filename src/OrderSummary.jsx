@@ -21,18 +21,39 @@ const OrderSummary = ({ billingData }) => {
   const calculateTotalPrice = () => {
     let totalPrice = 0;
     savedBookingsSummary.forEach((booking) => {
-      totalPrice += booking.totalPrice;
+      totalPrice += Number(booking.totalprice);
     });
     return totalPrice;
   };
 
   const [purchased, setPurchased] = useState(false);
-  const submitPurchase = () => {
-    setPurchased(!purchased);
-    localStorage.setItem("bookings",JSON.stringify([]));
-
+  // const submitPurchase = () => {
+  //   setPurchased(!purchased);
+  //   localStorage.setItem("bookings", JSON.stringify([]));
+  // };
+  const submitPurchase = async () => {
+    try {
+      const userData = JSON.parse(localStorage.getItem("userData"));
+      const userEmail = userData.email;
+  
+      // Effettua una richiesta DELETE per eliminare le prenotazioni dell'utente dal database
+      const response = await fetch(`http://localhost:5000/api/bookings/user/${userEmail}`, {
+        method: 'DELETE'
+      });
+      if (!response.ok) {
+        throw new Error("Errore durante l'eliminazione delle prenotazioni dal database");
+      }
+  
+      // Rimuovi le prenotazioni dal localStorage
+      localStorage.setItem("bookings", JSON.stringify([]));
+  
+      // Imposta lo stato 'purchased' su true
+      setPurchased(true);
+    } catch (error) {
+      console.error("Errore durante l'eliminazione delle prenotazioni dal database:", error);
+    }
   };
-
+    
   const NumeroOrdinale = () => {
     return <span>&#8470;</span>; // Numero ordinale Unicode
   };
@@ -41,23 +62,31 @@ const OrderSummary = ({ billingData }) => {
       {!purchased && (
         <div className="summary">
           <ul className="book-list-summary">
-            {savedBookingsSummary.map((booking, index) => (
-              <li className="book-item-summary" key={index}>
-                <strong>
-                  Ticket <NumeroOrdinale /> {index + 1}{" "}
-                </strong>
+            {savedBookingsSummary.map((booking, index) => {
+              const dateObject = new Date(booking.selecteddate);
+              const day = dateObject.getDate();
+              const month = dateObject.getMonth() + 1; // i mesi iniziano da 0, quindi aggiungi 1
+              const year = dateObject.getFullYear();
+              return (
+                <li className="book-item-summary" key={index}>
+                  <strong>
+                    Ticket <NumeroOrdinale /> {index + 1}
+                  </strong>
 
-                <strong> adults : {booking.adults}</strong>
+                  <strong> adults : {booking.adults}</strong>
 
-                <strong>children : {booking.child}</strong>
+                  <strong>children : {booking.children}</strong>
 
-                <strong>destination : {booking.selectedOption}</strong>
+                  <strong>destination : {booking.selectedoption}</strong>
 
-                <strong>selected date : {booking.selectedDate}</strong>
+                  <strong>
+                    selected date :{day}/{month}/{year}
+                  </strong>
 
-                <strong>price: {booking.totalPrice} $</strong>
-              </li>
-            ))}
+                  <strong>price: {booking.totalprice} $</strong>
+                </li>
+              );
+            })}
           </ul>
           <div className="resume-container">
             <div className="resume-message">

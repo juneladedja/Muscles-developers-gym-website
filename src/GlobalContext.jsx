@@ -31,26 +31,70 @@ function GlobalProvider({ children }) {
   function log() {
     console.log({
       adults: adults,
-      child: child,
+      children: child,
       baggages: baggages,
       SelectedOption: selectedOption,
       SelectedDate: String(selectedDate),
     });
   }
 
-  function bookDestination(newBooking) {
-    setBookings((bookings) => [...bookings, newBooking]);
-    localStorage.setItem("bookings", JSON.stringify(bookings));
+  // function bookDestination(newBooking) {
+  //   setBookings((bookings) => [...bookings, newBooking]);
+  //   localStorage.setItem("bookings", JSON.stringify(bookings));
 
-    console.log(bookings);
+  //   console.log(bookings);
+  // }
+
+  // async function bookDestination(newBooking) {
+  //   try {
+  //     await fetch('http://localhost:5000/api/bookings', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(newBooking),
+  //     });
+  //     console.log("Prenotazione effettuata con successo!");
+  //     setBookings((bookings) => [...bookings, newBooking]);
+  //     localStorage.setItem("bookings", JSON.stringify(bookings));
+  
+  //   } catch (error) {
+  //     console.error("Errore durante la prenotazione:", error);
+  //   }
+  // }
+
+  async function bookDestination(newBooking) {
+    try {
+      const response = await fetch('http://localhost:5000/api/bookings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newBooking),
+      });
+      const data = await response.json();
+  
+      if (response.ok) {
+        console.log("Prenotazione effettuata con successo!");
+        setBookings((bookings) => [...bookings, newBooking]);
+        localStorage.setItem("bookings", JSON.stringify([...bookings, newBooking]));
+      } else {
+        console.error("Errore durante la prenotazione:", data.message);
+      }
+    } catch (error) {
+      console.error("Errore durante la prenotazione:", error);
+    }
   }
+  
 
-  useEffect(() => {
-    console.log(bookings);
-    setTimeout(() => {
-      console.log(bookings);
-    }, 3000);
-  }, [bookings]);
+  // useEffect(() => {
+  //   console.log(bookings);
+  //   setTimeout(() => {
+  //     console.log(bookings);
+  //   }, 3000);
+  // }, [bookings]);
+
+
   const planetBackgrounds = {
     moon: "linear-gradient(135deg, #4F74C0, #24395C)",
     mars: "linear-gradient(135deg, #D74B4B, #673E3E)",

@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { GlobalContext } from "./GlobalContext";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
 
 function Drop() {
   const {
@@ -88,20 +89,30 @@ function Drop() {
     const month = selectedDate.getMonth() + 1; // I mesi iniziano da zero, quindi aggiungiamo 1
     const year = selectedDate.getFullYear();
     const formattedDate = `${day}/${month}/${year}`;
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    const email = userData.email;
+    const bookingId = uuidv4();
     const newBooking1 = {
+      id: bookingId,
+      email:email,
       adults: adults,
-      child: child,
+      children: child,
       baggages: baggages,
       selectedOption: selectedOption,
       selectedDate: formattedDate,
       totalPrice: totalPrice,
     };
-
     bookDestination(newBooking1);
     // localStorage.setItem("bookings", JSON.stringify(bookings));
+    // localStorage.setItem(
+    //   "bookings",
+    //   JSON.stringify([...bookings, newBooking1])
+    // );
+
+    const currentBookings = JSON.parse(localStorage.getItem("bookings")) || [];
     localStorage.setItem(
       "bookings",
-      JSON.stringify([...bookings, newBooking1])
+      JSON.stringify([...currentBookings, newBooking1])
     );
 
     setAdults(0);
@@ -115,6 +126,72 @@ function Drop() {
     // Chiudi il modale di conferma
     setShowModal(false);
   };
+// ////////////////////////////////////////////////////////////
+// ///////////////////////////////////////////////////////////////
+// const handleConfirm = async () => {
+//   try {
+//     const userData = JSON.parse(localStorage.getItem('userData'));
+//     const userEmail = userData.email;
+//     // Invia la richiesta al server per inserire la prenotazione nel database
+//     const response = await fetch('/api/bookings', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({
+//         email: userEmail, 
+//         adults: adults,
+//         children: child,
+//         baggages: baggages,
+//         destination: selectedOption,
+//         date: selectedDate.toISOString(), // Converti la data in formato ISO string
+//       }),
+//     });
+
+//     if (response.ok) {
+//       console.log('Prenotazione confermata e inserita nel database!');
+//       // Effettua altre operazioni, come mostrare un messaggio di conferma all'utente
+//       // Aggiungi la prenotazione al localStorage
+//       const day = selectedDate.getDate();
+//       const month = selectedDate.getMonth() + 1;
+//       const year = selectedDate.getFullYear();
+//       const formattedDate = `${day}/${month}/${year}`;
+//       const newBooking = {
+//         adults: adults,
+//         child: child,
+//         baggages: baggages,
+//         selectedOption: selectedOption,
+//         selectedDate: formattedDate,
+//         totalPrice: totalPrice,
+//       };
+//       localStorage.setItem(
+//         "bookings",
+//         JSON.stringify([...bookings, newBooking])
+//       );
+
+//       // Resetta lo stato degli input
+//       setAdults(0); 
+//       setChild(0);
+//       setBaggages(0);
+//       setSelectedOption("");
+//       setSelectedDate("");
+
+//       console.log("Modulo inviato!");
+
+//       // Chiudi il modale di conferma
+//       setShowModal(false);
+//     } else {
+//       console.error('Errore durante l\'inserimento della prenotazione nel database');
+//     }
+//   } catch (error) {
+//     console.error('Errore durante la richiesta al server:', error);
+//   }
+// };
+
+
+
+// //////////////////////////////////////////////////////
+  // ///////////////////////////////////////////////////////
 
   const handleCancel = () => {
     // Chiudi il modale di conferma

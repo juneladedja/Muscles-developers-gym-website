@@ -7,6 +7,7 @@ const secretKey = 'your_secret_key';
 const port = process.env.PORT || 5000;
 // //////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////
 const pgp = pgPromise();
 const db = pgp("postgres://postgres:postgres@localhost:5432/nebulaDB");
 
@@ -20,11 +21,98 @@ const setupDb = async () => {
             token TEXT
           )
         `);
+        await db.none(`
+        CREATE TABLE IF NOT EXISTS bookings (
+          id VARCHAR(36) PRIMARY KEY,
+          email VARCHAR(255) NOT NULL,
+          adults INT NOT NULL,
+          children INT NOT NULL,
+          baggages INT NOT NULL,
+          selectedOption VARCHAR(255) NOT NULL,
+          selectedDate DATE NOT NULL,
+          totalPrice DECIMAL(10, 2) NOT NULL
+        )
+      `);
 };
 setupDb();
 
 app.use(cors());
 app.use(express.json());
+
+// ///////////////////////////////////////////////////////
+// Aggiungi una nuova route per inserire i dati nella tabella "bookings"
+app.post("/api/bookings", async (req, res) => {
+  const { id, email, adults, children, baggages, selectedOption, selectedDate, totalPrice } = req.body;
+
+  try {
+    await db.none(
+      "INSERT INTO bookings ( id, email, adults, children, baggages, selectedOption, selectedDate, totalPrice) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+      [ id, email, adults, children, baggages, selectedOption, selectedDate, totalPrice]
+    );
+    res.json({ success: true, message: "Prenotazione effettuata con successo" });
+  } catch (error) {
+    console.error("Errore durante la prenotazione:", error);
+    res.status(500).json({ success: false, message: "Errore durante la prenotazione" });
+  }
+});
+
+// /////////////////////////////////////////////////////
+app.get("/api/bookings/:email", async (req, res) => {
+  const userEmail = req.params.email;
+
+  try {
+    const bookings = await db.any("SELECT * FROM bookings WHERE email = $1", userEmail);
+    res.json({ success: true, bookings: bookings });
+  } catch (error) {
+    console.error("Errore durante il recupero delle prenotazioni:", error);
+    res.status(500).json({ success: false, message: "Errore durante il recupero delle prenotazioni" });
+  }
+});
+
+// //////////////////////////////////////////////////////
+app.delete("/api/bookings/:id", async (req, res) => {
+  const bookingId = req.params.id;
+
+  try {
+    // Esegui la query per eliminare la prenotazione dal database utilizzando l'ID
+    await db.none("DELETE FROM bookings WHERE id = $1", bookingId);
+
+    res.json({ success: true, message: "Prenotazione eliminata con successo" });
+  } catch (error) {
+    console.error("Errore durante l'eliminazione della prenotazione:", error);
+    res.status(500).json({ success: false, message: "Errore durante l'eliminazione della prenotazione" });
+  }
+});
+
+// //////////////////////////////////////////////////////////
+
+app.delete("/api/bookings/user/:email", async (req, res) => {
+  const userEmail = req.params.email;
+
+  try {
+    await db.none("DELETE FROM bookings WHERE email = $1", userEmail);
+    res.json({ success: true, message: "Prenotazioni eliminate con successo" });
+  } catch (error) {
+    console.error("Errore durante l'eliminazione delle prenotazioni:", error);
+    res.status(500).json({ success: false, message: "Errore durante l'eliminazione delle prenotazioni" });
+  }
+});
+
+
+// Nel tuo file di routing del backend (ad esempio, index.js o un file dedicato alle rotte)
+// server.get("/api/bookings/:email", async (req, res) => {
+//   const userEmail = req.params.email;
+
+//   try {
+//     const bookings = await db.any("SELECT * FROM bookings WHERE email = $1", userEmail);
+//     res.json({ success: true, bookings: bookings });
+//   } catch (error) {
+//     console.error("Errore durante il recupero delle prenotazioni:", error);
+//     res.status(500).json({ success: false, message: "Errore durante il recupero delle prenotazioni" });
+//   }
+// });
+
+// ///////////////////////////////////////////////////////
 
 app.post("/api/register", async (req, res) => {
   const { full_name, email, password } = req.body;
